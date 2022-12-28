@@ -1,0 +1,166 @@
+options:
+    docker: true
+    size: 2x
+
+definitions:
+    services:
+        docker:
+            memory: 4096
+
+pipelines:
+    tags:
+        'release-*':
+            - step:
+                  name: Retag and Repush Images Production
+                  image: google/cloud-sdk:411.0.0
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - export IMAGE_NAME=gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                      - export RELEASE_IMAGE_NAME=gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_TAG}
+                      - export LATEST_IMAGE_NAME=gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:latest
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - docker pull $IMAGE_NAME
+                      - docker tag $IMAGE_NAME $RELEASE_IMAGE_NAME
+                      - docker tag $IMAGE_NAME $LATEST_IMAGE_NAME
+                      - docker push $RELEASE_IMAGE_NAME
+                      - docker push $LATEST_IMAGE_NAME
+                  services:
+                      - docker
+            - step:
+                  name: Deploy to Production
+                  image: google/cloud-sdk:411.0.0
+                  deployment: Production
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - gcloud container clusters get-credentials riofintech-private --region asia-southeast1-a --project $GCLOUD_PROJECT_ID
+                      - cd k8s && sed -i "s/latest/"${BITBUCKET_TAG}"/g" ./prod-creditvn-web-v1.yml
+                      - kubectl apply --dry-run=client -f ./prod-creditvn-web-v1.yml
+                      - kubectl apply -f ./prod-creditvn-web-v1.yml
+    branches:
+        master:
+            - step:
+                  name: Build and Push Docker Image
+                  image: google/cloud-sdk:411.0.0
+                  caches:
+                      - docker
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - docker build -t gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} .
+                      - docker tag gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                      - docker push gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                  services:
+                      - docker
+            - step:
+                  name: Deploy to Production
+                  deployment: Production
+                  image: google/cloud-sdk:411.0.0
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - gcloud container clusters get-credentials riofintech-private --zone asia-southeast1-a --project $GCLOUD_PROJECT_ID
+                      - cd k8s && sed -i "s/latest/"${BITBUCKET_COMMIT}"/g" ./prod-creditvn-web-v1.yml
+                      - kubectl apply -f ./prod-creditvn-web-v1.yml
+        'release/*':
+            - step:
+                  name: Build and Push Docker Image
+                  image: google/cloud-sdk:411.0.0
+                  caches:
+                      - docker
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - docker build -t gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} .
+                      - docker tag gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                      - docker push gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                  services:
+                      - docker
+            - step:
+                  name: Deploy to Staging Kubernetes
+                  deployment: Staging
+                  image: google/cloud-sdk:411.0.0
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - gcloud container clusters get-credentials riofintech-private --zone asia-southeast1-a --project $GCLOUD_PROJECT_ID
+                      - cd k8s && sed -i "s/latest/"${BITBUCKET_COMMIT}"/g" ./staging-creditvn-web-v1.yml
+                      - kubectl apply -f ./staging-creditvn-web-v1.yml
+        'hotfix/*':
+            - step:
+                  name: Build and Push Docker Image
+                  image: google/cloud-sdk:411.0.0
+                  caches:
+                      - docker
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - docker build -t gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} .
+                      - docker tag gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                      - docker push gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                  services:
+                      - docker
+            - step:
+                  name: Deploy to Staging Kubernetes
+                  deployment: Staging
+                  image: google/cloud-sdk:411.0.0
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - gcloud container clusters get-credentials riofintech-private --zone asia-southeast1-a --project $GCLOUD_PROJECT_ID
+                      - cd k8s && sed -i "s/latest/"${BITBUCKET_COMMIT}"/g" ./staging-creditvn-web-v1.yml
+                      - kubectl apply -f ./staging-creditvn-web-v1.yml
+        dev:
+            - step:
+                  name: Build and Push Docker Image
+                  image: google/cloud-sdk:411.0.0
+                  caches:
+                      - docker
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - docker build -t gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} .
+                      - docker tag gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT} gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                      - docker push gcr.io/$GCLOUD_PROJECT_ID/${BITBUCKET_REPO_SLUG}:${BITBUCKET_COMMIT}
+                  services:
+                      - docker
+            - step:
+                  name: Deploy to Dev Kubernetes
+                  deployment: Dev
+                  image: google/cloud-sdk:411.0.0
+                  script:
+                      - export GCLOUD_PROJECT_ID=rio-system-migration
+                      - echo $GCLOUD_API_KEYFILE > ~/.gcloud-api-key.json
+                      - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+                      - gcloud config set project $GCLOUD_PROJECT_ID
+                      - gcloud auth configure-docker --quiet
+                      - gcloud container clusters get-credentials riofintech-private --zone asia-southeast1-a --project $GCLOUD_PROJECT_ID
+                      - cd k8s && sed -i "s/latest/"${BITBUCKET_COMMIT}"/g" ./dev-creditvn-web-v1.yml
+                      - kubectl apply -f ./dev-creditvn-web-v1.yml
