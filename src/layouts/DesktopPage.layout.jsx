@@ -11,11 +11,11 @@ import { useToggle } from '@/hooks/useToggle';
 import homeStyle from '@/assets/Home.module.css';
 import { UserInfo } from '@/contexts/user';
 import DeskOBDSlider from '@/components/general/DeskOBDSlider';
+import Cookies from 'universal-cookie';
 
 export default function MobilePageLayout(props) {
     const [openSlide, toggleOpenSlide] = useToggle(false);
     const { user } = UserInfo();
-    // const isComplete = user && user.name && user.gender && user.address && user.id_card && user.email;
     const isComplete = user && user.name && user.gender && user.address && user.id_card;
 
     return (

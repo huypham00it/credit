@@ -3,8 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
     const gg_tag_id = process.env.NEXT_PUBLIC_GG_TAG_MANAGER;
-    const gg_tag_id_3 = process.env.NEXT_PUBLIC_G3;
-    const gg_opt = process.env.NEXT_PUBLIC_OPT;
+    const gg_opt = process.env.NEXT_PUBLIC_GO_ID;
 
     return (
         <Html>
@@ -28,18 +27,6 @@ export default function Document() {
 					height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
                     }}
                 />
-                <noscript
-                    dangerouslySetInnerHTML={{
-                        __html: `
-						<iframe
-                        src={"https://www.googletagmanager.com/ns.html?id=${gg_tag_id_3}"}
-                        height="0"
-                        width="0"
-                        style="display:none;visibility:hidden"
-                    ></iframe>		
-						`,
-                    }}
-                ></noscript>
                 <Main />
                 <NextScript />
             </body>

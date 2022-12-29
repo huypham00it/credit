@@ -173,8 +173,11 @@ const LoansList = ({ loans }) => {
     const cookies = new Cookies();
     const { showLoading, hideLoading } = useLoading();
     const click_id = cookies.get('click_id');
+    const flow_id = cookies.get('flow_id');
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+    const [signUpItem, setSignupItem] = useState({});
     const [form] = Form.useForm();
+    const { user, setUser } = UserInfo();
 
     const getOffer = (item) => {
         showLoading();
@@ -187,8 +190,7 @@ const LoansList = ({ loans }) => {
             .then(function (response) {
                 hideLoading();
                 if (response.data && response.data.data && response.data.data.tracking_link) {
-                    setIsEmailModalOpen(true);
-                    // window.location.href = response.data.data.tracking_link;
+                    window.location.href = response.data.data.tracking_link;
                 } else {
                     router.push(item.path);
                 }
@@ -228,14 +230,25 @@ const LoansList = ({ loans }) => {
             });
     };
 
+    const handleSignUp = (item) => {
+        setSignupItem(item);
+        setIsEmailModalOpen(true);
+    };
+
     const handleEmailOk = () => {
         form.validateFields()
-            .then((values) => {
-                console.log(values);
+            .then(async (values) => {
+                setUser({ ...user, email: Object.values(values)[0] });
+
+                await updateInfo(values);
+                getOffer(signUpItem);
+                setIsEmailModalOpen(false);
             })
-            .catch((info) => {
-                console.log('Validate Failed:', info);
-            });
+            .catch((info) => {});
+    };
+
+    const updateInfo = (emailData) => {
+        return request.post('/update_info', emailData);
     };
 
     return (
@@ -257,7 +270,11 @@ const LoansList = ({ loans }) => {
                                 type="primary"
                                 className={StyleHome.button}
                                 onClick={() => {
-                                    getOffer(loan);
+                                    if (!flow_id) {
+                                        getOffer(loan);
+                                    } else {
+                                        handleSignUp(loan);
+                                    }
                                 }}
                                 id={SLUGID.LOAN_SIGN_UP + loan.offer_id}
                             >
@@ -283,7 +300,13 @@ const LoansList = ({ loans }) => {
             >
                 <p style={{ marginBottom: 8 }}>Vui lòng bổ sung email để tiếp tục</p>
                 <Form form={form} name="email">
-                    <EmailInput autoFocus name="email" size="large" placeholder="Nhập email" />
+                    <EmailInput
+                        onPressEnter={handleEmailOk}
+                        autoFocus
+                        name="email"
+                        size="large"
+                        placeholder="Nhập email"
+                    />
                 </Form>
             </Modal>
         </>

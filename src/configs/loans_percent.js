@@ -11,16 +11,16 @@ import miraeasset from '@/assets/img/miraeasset.svg';
 import ptf from '@/assets/img/ptf.svg';
 
 const loans_percent = [
-	// {
-	// 	name: "takomo",
-	// 	img: takomo,
-	// 	percent: 84,
-	// 	offer_id: "takomocps",
-	// 	loan_type: "short",
-	// 	label: "Takomo",
-	// 	path: "/takomo",
-	// 	type: "redirect"
-	// },
+	{
+		name: "takomo",
+		img: takomo,
+		percent: 84,
+		offer_id: "takomocps",
+		loan_type: "short",
+		label: "Takomo",
+		path: "/takomo",
+		type: "redirect"
+	},
 	{
 		name: "tamo",
 		img: tamo,
@@ -40,16 +40,16 @@ const loans_percent = [
 		label: "Findo",
 		type: "redirect"
 	},
-	{
-		img: lotte,
-		percent: 17,
-		loan_type: "long",
-		name: "lotte",
-		offer_id: "lottefinance",
-		type: "inline",
-		path: "/lotte-finance",
-		label: "Lotte Finance"
-	},
+	// {
+	// 	img: lotte,
+	// 	percent: 17,
+	// 	loan_type: "long",
+	// 	name: "lotte",
+	// 	offer_id: "lottefinance",
+	// 	type: "inline",
+	// 	path: "/lotte-finance",
+	// 	label: "Lotte Finance"
+	// },
 	{
 		name: "mcredit",
 		img: mcredit,

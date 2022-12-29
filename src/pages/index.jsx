@@ -21,6 +21,7 @@ import styleLogin from '@/assets/Login.module.css';
 // import Bubble from '@/components/home/Bubble';
 import request from '@/utils/request';
 import title from '@/configs/title';
+import Cookies from 'universal-cookie';
 
 const { Content } = Layout;
 
@@ -32,7 +33,6 @@ import { useState } from 'react';
 function Home() {
     const screen = useBreakpoint();
     const { user } = UserInfo();
-    // const isComplete = user && user.name && user.gender && user.address && user.id_card && user.email;
     const isComplete = user && user.name && user.gender && user.address && user.id_card;
     // const [openBubble, setOpenBubble] = useState(true);
 
@@ -89,6 +89,8 @@ function UserForm() {
         address: '',
         email: '',
     });
+    const cookies = new Cookies();
+    const flow_id = true;
 
     const next = (data) => {
         if (data && data.type && data.type == 'id_card' && data.value.length == 9) setCurrent(current + 2);
@@ -134,15 +136,107 @@ function UserForm() {
         else setCurrent(current - 1);
     };
 
-    const steps = [
-        <NameQuestion key="1" user={new_user} setUser={setNewUser} nextQuestion={next} />,
-        <EmailQuestion key="2" user={new_user} setUser={setNewUser} nextQuestion={next} />,
-        <GenderQuestion key="3" user={new_user} setUser={setNewUser} prevQuestion={prev} nextQuestion={next} />,
-        <IdQuestion key="4" user={new_user} setUser={setNewUser} prevQuestion={prev} nextQuestion={next} />,
-        <OldIdQuestion key="5" user={new_user} setUser={setNewUser} prevQuestion={prev} nextQuestion={next} />,
-        <ProvinceQuestion key="6" user={new_user} setUser={setNewUser} prevQuestion={prev} nextQuestion={next} />,
-    ];
-
+    const steps = !flow_id
+        ? [
+              <NameQuestion
+                  key="1"
+                  current_step={1}
+                  total_steps={6}
+                  user={new_user}
+                  setUser={setNewUser}
+                  nextQuestion={next}
+              />,
+              <EmailQuestion
+                  key="2"
+                  current_step={2}
+                  total_steps={6}
+                  user={new_user}
+                  setUser={setNewUser}
+                  nextQuestion={next}
+              />,
+              <GenderQuestion
+                  key="3"
+                  current_step={3}
+                  total_steps={6}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+              <IdQuestion
+                  key="4"
+                  current_step={4}
+                  total_steps={6}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+              <OldIdQuestion
+                  key="5"
+                  current_step={5}
+                  total_steps={6}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+              <ProvinceQuestion
+                  key="6"
+                  current_step={6}
+                  total_steps={6}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+          ]
+        : [
+              <NameQuestion
+                  key="1"
+                  current_step={1}
+                  total_steps={5}
+                  user={new_user}
+                  setUser={setNewUser}
+                  nextQuestion={next}
+              />,
+              <GenderQuestion
+                  key="2"
+                  current_step={2}
+                  total_steps={5}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+              <IdQuestion
+                  key="3"
+                  current_step={3}
+                  total_steps={5}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+              <OldIdQuestion
+                  key="4"
+                  current_step={4}
+                  total_steps={5}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+              <ProvinceQuestion
+                  key="5"
+                  current_step={5}
+                  total_steps={5}
+                  user={new_user}
+                  setUser={setNewUser}
+                  prevQuestion={prev}
+                  nextQuestion={next}
+              />,
+          ];
     return screen.md ? (
         <>{steps[current]}</>
     ) : (
