@@ -301,7 +301,7 @@ const LoansList = ({ loans }) => {
                 wrapClassName={StyleHome.email_modal}
                 onCancel={() => setIsEmailModalOpen(false)}
                 okButtonProps={{
-                    id: 'email-id',
+                    id: SLUGID.NEXT_EMAIL,
                 }}
             >
                 <p style={{ marginBottom: 8 }}>Vui lòng bổ sung email để tiếp tục</p>
