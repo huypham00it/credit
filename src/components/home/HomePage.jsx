@@ -270,7 +270,7 @@ const LoansList = ({ loans }) => {
                                 type="primary"
                                 className={StyleHome.button}
                                 onClick={() => {
-                                    if (!flow_id) {
+                                    if (!flow_id || user.email) {
                                         getOffer(loan);
                                     } else {
                                         handleSignUp(loan);

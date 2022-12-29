@@ -199,9 +199,17 @@ export default function UserForm() {
                                     size="large"
                                     style={{ width: '100%' }}
                                     disabled={
-                                        !form.isFieldsTouched(
-                                            ['birthday', 'income', 'job', 'loan_amount', 'email'],
-                                            true,
+                                        !(
+                                            form.getFieldValue('name') &&
+                                            form.getFieldValue('gender') &&
+                                            form.getFieldValue('phone') &&
+                                            form.getFieldValue('id_card') &&
+                                            form.getFieldValue('address') &&
+                                            form.getFieldValue('email') &&
+                                            form.getFieldValue('income') &&
+                                            form.getFieldValue('loan_amount') &&
+                                            form.getFieldValue('job') &&
+                                            form.getFieldValue('birthday')
                                         ) || !!form.getFieldsError().filter(({ errors }) => errors.length).length
                                     }
                                 >
