@@ -104,7 +104,6 @@ const CreditScore = ({ score, large }) => {
     useEffect(() => {
         // const canvas = document.querySelector('canvas');
         // setCanvasHeight(canvas.clientHeight + canvas.clientHeight * 0.109);
-
         const ScoreWrap = document.querySelector('#credit-score');
         // const bubble = document.getElementById('bubble');
         // if (!screen.md && bubble !== null) {
@@ -231,8 +230,12 @@ const LoansList = ({ loans }) => {
     };
 
     const handleSignUp = (item) => {
-        setSignupItem(item);
-        setIsEmailModalOpen(true);
+        if (!user.email) {
+            setSignupItem(item);
+            setIsEmailModalOpen(true);
+        } else {
+            getOffer(item);
+        }
     };
 
     const handleEmailOk = () => {
@@ -270,7 +273,7 @@ const LoansList = ({ loans }) => {
                                 type="primary"
                                 className={StyleHome.button}
                                 onClick={() => {
-                                    if (!flow_id || user.email) {
+                                    if (!flow_id) {
                                         getOffer(loan);
                                     } else {
                                         handleSignUp(loan);
@@ -297,6 +300,9 @@ const LoansList = ({ loans }) => {
                 closable={false}
                 wrapClassName={StyleHome.email_modal}
                 onCancel={() => setIsEmailModalOpen(false)}
+                okButtonProps={{
+                    id: 'email-id',
+                }}
             >
                 <p style={{ marginBottom: 8 }}>Vui lòng bổ sung email để tiếp tục</p>
                 <Form form={form} name="email">
