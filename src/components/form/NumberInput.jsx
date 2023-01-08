@@ -1,26 +1,21 @@
 import React from 'react';
 import { Form, InputNumber } from 'antd';
 
-const NumberInput = ({ required = true, ...props }) => {
-
+const NumberInput = ({ name, required = true, initialValue, required_message, ...props }) => {
     return (
         <Form.Item
-            name={props.name}
+            name={name}
             rules={[
                 {
                     required: required,
-                    message: props.required_message
-                }
+                    message: required_message,
+                },
             ]}
-            initialValue={props.initialValue ? props.initialValue : ""}
+            initialValue={initialValue ? initialValue : ''}
         >
-            <InputNumber
-                autoComplete='off'
-                style={{width: '100%'}}
-                {...props}
-            />
+            <InputNumber autoComplete="off" style={{ width: '100%' }} {...props} />
         </Form.Item>
-    )
-}
+    );
+};
 
-export default NumberInput
+export default NumberInput;

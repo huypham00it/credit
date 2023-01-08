@@ -1,8 +1,9 @@
 import { Layout, Row, Col } from 'antd';
 const { Content } = Layout;
 import Image from 'next/image';
-import { CloseCircleOutlined } from '@ant-design/icons';
+import Cookies from 'universal-cookie';
 
+import { CloseCircleOutlined } from '@ant-design/icons';
 import DesktopLayout from '@/layouts/Desktop.layout';
 import Header from '@/layouts/components/Header';
 import slides from '@/configs/obd_slider';
@@ -11,7 +12,6 @@ import { useToggle } from '@/hooks/useToggle';
 import homeStyle from '@/assets/Home.module.css';
 import { UserInfo } from '@/contexts/user';
 import DeskOBDSlider from '@/components/general/DeskOBDSlider';
-import Cookies from 'universal-cookie';
 
 export default function MobilePageLayout(props) {
     const [openSlide, toggleOpenSlide] = useToggle(false);

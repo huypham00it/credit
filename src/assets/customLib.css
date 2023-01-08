@@ -1,6 +1,23 @@
+.ant-select-selection-placeholder,
+input::placeholder {
+    font-weight: 400 !important;
+    font-family: Montserrat;
+    color: rgba(0, 0, 0, 0.33);
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(0, 0, 0, 0.33);
+}
+
+input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(0, 0, 0, 0.33);
+}
+
 #info-obd .slick-list,
 #info-obd .slick-track,
-#info-obd .slick-slide>div {
+#info-obd .slick-slide > div {
     height: 100%;
 }
 
@@ -18,7 +35,7 @@
 
 /* Vamo */
 #vamo_slider {
-    --ant-primary-3: #594DC9;
+    --ant-primary-3: #594dc9;
 }
 
 #vamo_slider .ant-slider-dot {
@@ -33,7 +50,7 @@
     top: -2px;
 }
 
-#vamo_payment .ant-radio-button~span {
+#vamo_payment .ant-radio-button ~ span {
     font-size: 14px;
     font-weight: 400;
     display: flex;
@@ -43,7 +60,7 @@
     justify-content: center;
 }
 
-#vamo_payment label:first-child .ant-radio-button~span {
+#vamo_payment label:first-child .ant-radio-button ~ span {
     width: 100px;
     padding-right: 0;
     margin: 0 auto;
@@ -64,7 +81,6 @@
 }
 
 @media screen and (max-width: 767px) {
-
     #vamo_mobile .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
     .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
         max-width: calc(100vw - 76px);
@@ -81,7 +97,7 @@
     display: none;
 }
 
-#signup-history .ant-table-content{
+#signup-history .ant-table-content {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -118,16 +134,14 @@
 
 /* TAMO: BEGIN */
 #tamo_steps {
-    --ant-primary-color: #00B3B2;
+    --ant-primary-color: #00b3b2;
 }
 
 @media screen and (max-width: 767px) {
-
     #tamo_steps,
     #takomo_steps {
         flex-direction: row;
     }
-
 
     #tamo_steps .ant-steps-item-title {
         max-width: 77px;
@@ -182,7 +196,7 @@
 
 /* TAKOMO: BEGIN */
 #takomo_steps {
-    --ant-primary-color: #F6358E;
+    --ant-primary-color: #f6358e;
 }
 
 /* TAKOMO: END */

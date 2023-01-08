@@ -230,7 +230,7 @@ const LoansList = ({ loans }) => {
     };
 
     const handleSignUp = (item) => {
-        if (!user.email) {
+        if (!user.email || user.email == '') {
             setSignupItem(item);
             setIsEmailModalOpen(true);
         } else {

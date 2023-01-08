@@ -1,0 +1,222 @@
+[
+ {
+  "bank_name": "An BinhCommercial Joint Stock Bank",
+  "shorten_name": "ABBANK",
+  "sub_name": "NH An Bình"
+ },
+ {
+  "bank_name": "Asia Commercial Joint Stock Bank",
+  "shorten_name": "ACB",
+  "sub_name": "NH Á Châu"
+ },
+ {
+  "bank_name": "Vietnam Bank for Agriculture and Rural Development or Agribank (Agribank)",
+  "shorten_name": "AGRIBANK",
+  "sub_name": "NH Nông nghiệp và Phát triển Nông thôn Việt Nam"
+ },
+ {
+  "bank_name": "North Asia Commercial Joint Stock Bank",
+  "shorten_name": "BAB",
+  "sub_name": "NH Bắc Á"
+ },
+ {
+  "bank_name": "Bao Viet Joint Stock Commercial Bank",
+  "shorten_name": "BAOVIET Bank",
+  "sub_name": "NH Bảo Việt"
+ },
+ {
+  "bank_name": "Joint Stock Commercial Bank for Investment and Development of Vietnam (BIDV)",
+  "shorten_name": "BIDV",
+  "sub_name": "NH Đầu tư và Phát triển Việt Nam"
+ },
+ {
+  "bank_name": "CIMB Bank (Vietnam) Limited",
+  "shorten_name": "CIMB Bank",
+  "sub_name": "NH CIMB Việt Nam"
+ },
+ {
+  "bank_name": "Co-operative bank of VietNam",
+  "shorten_name": "CO",
+  "sub_name": "NH Hợp tác xã Việt Nam"
+ },
+ {
+  "bank_name": "DongA Joint Stock Commercial Bank",
+  "shorten_name": "DongA Bank",
+  "sub_name": "NH Đông Á"
+ },
+ {
+  "bank_name": "VIETNAM EXPORT IMPORT COMMERCIAL JOINT STOCK BANK (Eximbank)",
+  "shorten_name": "EximBank",
+  "sub_name": "NH Xuất Nhập Khẩu"
+ },
+ {
+  "bank_name": "Global Petro Sole Member LimitedCommercial Bank",
+  "shorten_name": "GPBank",
+  "sub_name": "NH Dầu khí toàn cầu"
+ },
+ {
+  "bank_name": "Ho Chi Minh City Development Joint Stock Commercial Bank",
+  "shorten_name": "HDBank",
+  "sub_name": "NH Phát triển thành phố Hồ Chí Minh"
+ },
+ {
+  "bank_name": "Hong Leong Commercial Joint Stock Bank",
+  "shorten_name": "HLB",
+  "sub_name": "NH Hong Leong Việt Nam"
+ },
+ {
+  "bank_name": "Industrial Bank of Korea - Ha Noi Branch",
+  "shorten_name": "IBK",
+  "sub_name": "NH Công nghiệp Hàn Quốc"
+ },
+ {
+  "bank_name": "Indovina Bank Ltd",
+  "shorten_name": "IVB",
+  "sub_name": "NH Indovina"
+ },
+ {
+  "bank_name": "Kien Long Commercial Joint -Stock Bank",
+  "shorten_name": "Kienlong Bank",
+  "sub_name": "NH Kiên Long"
+ },
+ {
+  "bank_name": "LienViet Post Joint Stock Commercial Bank (LienViet Post bank)",
+  "shorten_name": "LienVietPostBank",
+  "sub_name": "NH Bưu điện Liên Việt"
+ },
+ {
+  "bank_name": "Military Commercial Joint Stock Bank",
+  "shorten_name": "MB",
+  "sub_name": "NH Quân Đội"
+ },
+ {
+  "bank_name": "Vietnam Maritime Commercial Stock Bank (MSB)",
+  "shorten_name": "MSB",
+  "sub_name": "NH Hàng Hải"
+ },
+ {
+  "bank_name": "Nam A Commercial Joint Stock Bank (Nam A Bank)",
+  "shorten_name": "Nam A Bank",
+  "sub_name": "NH Nam Á"
+ },
+ {
+  "bank_name": "National Citizen Commercial Joint Stock Bank (NCB)",
+  "shorten_name": "NCB",
+  "sub_name": "NH Quốc dân"
+ },
+ {
+  "bank_name": "Orient Commercial Joint StockBank (OCB)",
+  "shorten_name": "OCB",
+  "sub_name": "NH Phương Đông"
+ },
+ {
+  "bank_name": "Ocean Commercial Joint - Stock Bank",
+  "shorten_name": "OceanBank",
+  "sub_name": "NH Đại Dương"
+ },
+ {
+  "bank_name": "PETROLIMEX GROUPCOMMERCIAL JOINT STOCK BANK",
+  "shorten_name": "PG Bank",
+  "sub_name": "NH Xăng dầu Petrolimex"
+ },
+ {
+  "bank_name": "Public Bank Vietnam Limited (PBVN)",
+  "shorten_name": "PUBLIC Bank",
+  "sub_name": "NH Public Bank Việt Nam"
+ },
+ {
+  "bank_name": "Vietnam Public Joint Stock Commercial Bank (Vietnam dai chung)",
+  "shorten_name": "PVcomBank",
+  "sub_name": "NH Đại Chúng Việt Nam"
+ },
+ {
+  "bank_name": "Sacombank",
+  "shorten_name": "Sacombank",
+  "sub_name": "NH Sài Gòn Thương Tín"
+ },
+ {
+  "bank_name": "Sai Gon Joint Stock Commercial Bank (Saigon Bank)",
+  "shorten_name": "Saigon Bank",
+  "sub_name": "NH Sài gòn Công Thương"
+ },
+ {
+  "bank_name": "Sai Gon Joint StockCommercial Bank",
+  "shorten_name": "SCB",
+  "sub_name": "NH Sài Gòn"
+ },
+ {
+  "bank_name": "Southeast Asia Commercial Joint Stock Bank (SeABank)",
+  "shorten_name": "SeABank",
+  "sub_name": "NH Đông Nam Á"
+ },
+ {
+  "bank_name": "Sai Gon- Ha Noi Commercial Joint Stock Bank",
+  "shorten_name": "SHB",
+  "sub_name": "NH Sài Gòn – Hà Nội"
+ },
+ {
+  "bank_name": "Shinhan Bank Vietnam Limited",
+  "shorten_name": "Shinhan Bank",
+  "sub_name": "NH Shinhan Việt Nam"
+ },
+ {
+  "bank_name": "Vietnam Technological and Commercial Joint Stock Bank",
+  "shorten_name": "Techcombank",
+  "sub_name": "NH Kỹ Thương"
+ },
+ {
+  "bank_name": "TIEN PHONG COMMERCIAL JOINT STOCK BANK",
+  "shorten_name": "TPBank",
+  "sub_name": "NH Tiên Phong"
+ },
+ {
+  "bank_name": "UNITED OVERSEAS BANK (VIETNAM) LIMITED",
+  "shorten_name": "UOB",
+  "sub_name": "NH UOB Việt Nam"
+ },
+ {
+  "bank_name": "Vietnam International Commercial Joint Stock Bank (VIB)",
+  "shorten_name": "VIB",
+  "sub_name": "NH Quốc Tế"
+ },
+ {
+  "bank_name": "VIET CAPITAL COMMERCIAL JOINT STOCK BANK (Ban Viet)",
+  "shorten_name": "Viet Capital Bank",
+  "sub_name": "NH Bản Việt"
+ },
+ {
+  "bank_name": "Vietnam Asia Commercial Joint Stock Bank (VietA)",
+  "shorten_name": "VIETABANK",
+  "sub_name": "NH Việt Á"
+ },
+ {
+  "bank_name": "Vietnam Thuong Tin Commercial Joint Stock Bank (Vietbank)",
+  "shorten_name": "Vietbank",
+  "sub_name": "NH Việt Nam Thương Tín"
+ },
+ {
+  "bank_name": "Joint Stock Commercial Bank for Foreign Trade of Vietnam (Vietcombank)",
+  "shorten_name": "Vietcombank",
+  "sub_name": "NH Ngoại thương Việt Nam"
+ },
+ {
+  "bank_name": "VIETNAM JOINT STOCK COMMERCIAL BANK FOR INDUSTRY AND TRADE (Viettinbank)",
+  "shorten_name": "VietinBank",
+  "sub_name": "NH Công thương Việt Nam"
+ },
+ {
+  "bank_name": "Vietnam Prosperity Joint-Stock Commercial Bank",
+  "shorten_name": "VPBank",
+  "sub_name": "NH Việt Nam Thịnh Vượng"
+ },
+ {
+  "bank_name": "Vietnam-Russia Joint Venture Bank - VRB",
+  "shorten_name": "VRB",
+  "sub_name": "NH Việt – Nga"
+ },
+ {
+  "bank_name": "Woori Bank Vietnam Limited",
+  "shorten_name": "Woori Bank",
+  "sub_name": "NH Woori Việt Nam"
+ }
+]

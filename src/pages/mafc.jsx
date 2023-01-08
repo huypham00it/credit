@@ -18,39 +18,39 @@ const { useBreakpoint } = Grid;
 export default function InfoPage() {
 	const screen = useBreakpoint();
 	const { user } = UserInfo();
+	return <></>
+	// return screen.md ? (
+	// 	<RouterGuard>
+	// 		<DesktopAdvPageLayout
+	// 			bg={MafcBg.src}
+	// 		>
+	// 			<DesktopHeader logo={MafcLogo} banner={Banner.MafcBanner} bg="#004179" />
 
-	return screen.md ? (
-		<RouterGuard>
-			<DesktopAdvPageLayout
-				bg={MafcBg.src}
-			>
-				<DesktopHeader logo={MafcLogo} banner={Banner.MafcBanner} bg="#004179" />
+	// 			<Row style={{ maxWidth: '375px', margin: '0 auto', width: '100%' }}>
+	// 				<Col span={24} style={{ padding: '0 16px 16px 16px' }}>
+	// 					<h1 style={{ textAlign: 'center', marginTop: '8' }}>Chào mừng <span>{user && user.gender === 'Nam' ? 'anh' : 'chị'}</span> <span className={StyleMCredit.text_bold}>{user && user.name}</span> đã đến với <span className={StyleMCredit.text_bold}>Mirae Asset</span>!</h1>
+	// 					<p style={{ fontSize: '14px' }}>Vui lòng kiểm tra các thông tin sau</p>
 
-				<Row style={{ maxWidth: '375px', margin: '0 auto', width: '100%' }}>
-					<Col span={24} style={{ padding: '0 16px 16px 16px' }}>
-						<h1 style={{ textAlign: 'center', marginTop: '8' }}>Chào mừng <span>{user && user.gender === 'Nam' ? 'anh' : 'chị'}</span> <span className={StyleMCredit.text_bold}>{user && user.name}</span> đã đến với <span className={StyleMCredit.text_bold}>Mirae Asset</span>!</h1>
-						<p style={{ fontSize: '14px' }}>Vui lòng kiểm tra các thông tin sau</p>
+	// 					<UserForm style={{ margin: '12px 0' }} />
+	// 				</Col>
+	// 			</Row>
 
-						<UserForm style={{ margin: '12px 0' }} />
-					</Col>
-				</Row>
+	// 			<Footer style={{ marginTop: 'auto' }} />
+	// 		</DesktopAdvPageLayout>
+	// 	</RouterGuard>
+	// ) : (
+	// 	<RouterGuard>
+	// 		<MobileAdvPageLayout>
+	// 			<MobileHeader logo={MafcLogo} banner={Banner.MafcBanner} />
+	// 			<Row style={{ backgroundColor: '#ffffff' }}>
+	// 				<Col span={24} style={{ padding: '0 16px 16px 16px' }}>
+	// 					<h1 style={{ textAlign: 'center', marginTop: '8.82px' }}>Chào mừng <span>{user && user.gender === 'Nam' ? 'anh' : 'chị'}</span> <span className={StyleMCredit.text_bold}>{user && user.name}</span> đã đến với <span className={StyleMCredit.text_bold}>Mirae Asset</span>!</h1>
+	// 					<p style={{ fontSize: '14px' }}>Vui lòng kiểm tra các thông tin sau</p>
 
-				<Footer style={{ marginTop: 'auto' }} />
-			</DesktopAdvPageLayout>
-		</RouterGuard>
-	) : (
-		<RouterGuard>
-			<MobileAdvPageLayout>
-				<MobileHeader logo={MafcLogo} banner={Banner.MafcBanner} />
-				<Row style={{ backgroundColor: '#ffffff' }}>
-					<Col span={24} style={{ padding: '0 16px 16px 16px' }}>
-						<h1 style={{ textAlign: 'center', marginTop: '8.82px' }}>Chào mừng <span>{user && user.gender === 'Nam' ? 'anh' : 'chị'}</span> <span className={StyleMCredit.text_bold}>{user && user.name}</span> đã đến với <span className={StyleMCredit.text_bold}>Mirae Asset</span>!</h1>
-						<p style={{ fontSize: '14px' }}>Vui lòng kiểm tra các thông tin sau</p>
-
-						<UserForm style={{ margin: '12px 0' }} />
-					</Col>
-				</Row>
-			</MobileAdvPageLayout>
-		</RouterGuard>
-	);
+	// 					<UserForm style={{ margin: '12px 0' }} />
+	// 				</Col>
+	// 			</Row>
+	// 		</MobileAdvPageLayout>
+	// 	</RouterGuard>
+	// );
 }

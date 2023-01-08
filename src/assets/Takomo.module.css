@@ -3,6 +3,73 @@
 }
 
 .submit_button:not(:disabled) {
-    background-color: #F6358E;
-    color: #ffffff
+    background-color: #f6358e;
+    color: #ffffff;
+}
+
+.image_uploader {
+    aspect-ratio: 16/9;
+}
+
+.image_uploader > div {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.image_uploader img {
+    object-fit: cover;
+}
+
+.upload_icon {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.upload_icon svg {
+    height: 40px;
+    width: 40px;
+}
+
+.upload_component + .upload_component {
+    margin-top: 20px;
+}
+
+.upload_component img {
+    object-fit: cover;
+}
+
+@media screen and (max-width: 767.98px) {
+    .upload_component__wrap {
+        aspect-ratio: 16/9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px dashed #d9d9d9;
+        background-color: #fafafa;
+    }
+
+    .upload_component__wrap svg,
+    .upload_component__outer svg {
+        width: 40px;
+        height: 40px;
+        color: rgba(0, 0, 0, 0.45);
+    }
+
+    .capture {
+        height: 100%;
+    }
+
+    .capture > div:nth-child(2) {
+        height: 100%;
+    }
+
+    .capture > div:nth-child(2) > div:nth-child(2) {
+        height: 100%;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .capture > div:nth-child(2) > div:nth-child(2) > div {
+        height: 100%;
+    }
 }

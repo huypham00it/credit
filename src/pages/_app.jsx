@@ -1,13 +1,16 @@
 import 'antd/dist/antd.variable.min.css';
-import '@/assets/globals.css';
-import '@/assets/customLib.css';
 import NextNProgress from 'nextjs-progressbar';
-import theme from '@/configs/theme';
 import { ConfigProvider } from 'antd';
-import { LoadingProvider } from '@/providers/LoadingProvider';
-import { UserContext } from '@/contexts/user';
 import { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
+import locale from 'antd/lib/locale/vi_VN';
+import 'moment/locale/vi';
+
+import { UserContext } from '@/contexts/user';
+import '@/assets/globals.css';
+import '@/assets/customLib.css';
+import theme from '@/configs/theme';
+import { LoadingProvider } from '@/providers/LoadingProvider';
 
 ConfigProvider.config({ theme });
 
@@ -43,7 +46,7 @@ function MyApp({ Component, pageProps }) {
     }, []);
 
     return (
-        <ConfigProvider>
+        <ConfigProvider locale={locale}>
             <NextNProgress color={theme.primaryColor} />
             <UserContext.Provider
                 value={{

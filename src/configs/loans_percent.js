@@ -15,7 +15,7 @@ const loans_percent = [
 		name: "takomo",
 		img: takomo,
 		percent: 84,
-		offer_id: "takomocps",
+		offer_id: "takomo",
 		loan_type: "short",
 		label: "Takomo",
 		path: "/takomo",
@@ -90,16 +90,16 @@ const loans_percent = [
 		path: "/senmo",
 		type: "redirect"
 	},
-	{
-		name: "mafc",
-		img: miraeasset,
-		percent: 30,
-		offer_id: "mafc2",
-		loan_type: "long",
-		label: "Mirae Asset Finance Vietnam",
-		path: "/mafc",
-		type: "inline"
-	},
+	// {
+	// 	name: "mafc",
+	// 	img: miraeasset,
+	// 	percent: 30,
+	// 	offer_id: "mafc2",
+	// 	loan_type: "long",
+	// 	label: "Mirae Asset Finance Vietnam",
+	// 	path: "/mafc",
+	// 	type: "inline"
+	// },
 	{
 		name: "vamo",
 		img: vamo,

@@ -6,7 +6,7 @@ const mafc_tracking = {
     address: {},
     phone: {},
     income: {},
-}
+};
 
 //mcredit
 const mcredit_tracking = {
@@ -18,8 +18,8 @@ const mcredit_tracking = {
     income: {},
     job: {},
     loan_amount: {},
-    birthday: {}
-}
+    birthday: {},
+};
 
 //lotte-finance
 const lotte_finance_tracking = {
@@ -34,7 +34,7 @@ const lotte_finance_tracking = {
     income: {},
     job: {},
     loan_amount: {},
-}
+};
 
 //ptf
 const ptf_tracking = {
@@ -47,11 +47,9 @@ const ptf_tracking = {
     loan_amount: {},
     legal: {},
     email: {},
-}
-
-export { 
-    mafc_tracking, 
-    mcredit_tracking, 
-    lotte_finance_tracking,
-    ptf_tracking
 };
+
+//takomo
+const takomo_tracking = {};
+
+export { mafc_tracking, mcredit_tracking, lotte_finance_tracking, ptf_tracking, takomo_tracking };

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Form, Select } from 'antd';
 
-const SelectInput = ({ initialValue = null, required = true, ...props }) => {
-
+const SelectInput = ({ initialValue = null, required = true, fieldStyle, ...props }) => {
     return (
         <Form.Item
             name={props.name}
@@ -13,12 +12,11 @@ const SelectInput = ({ initialValue = null, required = true, ...props }) => {
                 },
             ]}
             initialValue={initialValue}
+            style={fieldStyle}
         >
-            <Select
-                {...props}
-            />
+            <Select {...props} />
         </Form.Item>
-    )
-}
+    );
+};
 
-export default SelectInput
+export default SelectInput;
