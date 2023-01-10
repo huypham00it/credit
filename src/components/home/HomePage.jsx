@@ -273,11 +273,19 @@ const LoansList = ({ loans }) => {
                                 type="primary"
                                 className={StyleHome.button}
                                 onClick={() => {
-                                    if (!flow_id) {
-                                        getOffer(loan);
+                                    const testEmail = document.getElementsByClassName('test-email')[0];
+
+                                    if (testEmail) {
+                                        alert('flow a');
                                     } else {
-                                        handleSignUp(loan);
+                                        alert('flow b');
                                     }
+
+                                    // if (!flow_id) {
+                                    //     getOffer(loan);
+                                    // } else {
+                                    //     handleSignUp(loan);
+                                    // }
                                 }}
                                 id={SLUGID.LOAN_SIGN_UP + loan.offer_id}
                             >
