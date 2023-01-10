@@ -276,16 +276,10 @@ const LoansList = ({ loans }) => {
                                     const testEmail = document.getElementsByClassName('test-email')[0];
 
                                     if (testEmail) {
-                                        alert('flow a');
+                                        handleSignUp(loan);
                                     } else {
-                                        alert('flow b');
+                                        getOffer(loan);
                                     }
-
-                                    // if (!flow_id) {
-                                    //     getOffer(loan);
-                                    // } else {
-                                    //     handleSignUp(loan);
-                                    // }
                                 }}
                                 id={SLUGID.LOAN_SIGN_UP + loan.offer_id}
                             >
