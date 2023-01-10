@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import 'moment/locale/vi';
-import { Button, Form, Upload } from 'antd';
+import { Button, Form, Upload, Grid } from 'antd';
 import Image from 'next/image';
 import PropTypes from 'prop-types';
 
-import { LoadingOutlined } from '@ant-design/icons';
+import { CameraOutlined, LoadingOutlined, UploadOutlined } from '@ant-design/icons';
 import style from '@/assets/Takomo.module.css';
 
+const { useBreakpoint } = Grid;
+
 const UploadComponent = ({ label, required = false, uploadIcon, placeholder, name, initialValue, ...props }) => {
+    const screen = useBreakpoint();
+    const uploadRef = useRef(null);
+    const [captureMode, setCaptureMode] = useState(true);
+
+    const [fileList, setFileList] = useState([]);
+
     const getBase64 = (img, callback) => {
         const reader = new FileReader();
         reader.addEventListener('load', () => callback(reader.result));
@@ -68,6 +76,17 @@ const UploadComponent = ({ label, required = false, uploadIcon, placeholder, nam
         );
     };
 
+    // const handleUploadMobile = (type) => {
+    //     const inputElm = document.querySelector(`input[data-id="${name}"]`);
+    //     if (type === 'camera') {
+    //         inputElm.setAttribute('capture', true);
+    //         inputElm.click();
+    //     } else {
+    //         inputElm.removeAttribute('capture');
+    //         inputElm.click();
+    //     }
+    // };
+
     return (
         <div className={style.upload_component}>
             <p
@@ -86,13 +105,12 @@ const UploadComponent = ({ label, required = false, uploadIcon, placeholder, nam
                     listType="picture-card"
                     className={style.image_uploader}
                     showUploadList={false}
-                    beforeUpload={beforeUpload}
+                    // beforeUpload={beforeUpload}
                     onChange={handleChange}
                     style={{
                         width: '100%',
                     }}
                     accept="image/png, image/jpeg, image/jpg, image/webp"
-                    capture
                 >
                     {imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element

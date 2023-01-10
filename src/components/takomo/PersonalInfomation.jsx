@@ -44,163 +44,172 @@ const PersonalInfomation = ({ next, user, data, handleTrackingStart, handleTrack
     };
 
     return (
-        <Form form={form} name="personal_info_form">
-            <h5 style={{ fontWeight: 700, marginBottom: 12 }}>Thông tin cá nhân</h5>
+        <div
+            style={{
+                maxWidth: '343px',
+                width: '100%',
+                margin: '0 auto',
+            }}
+        >
+            <Form form={form} name="personal_info_form">
+                <h5 style={{ fontWeight: 700, marginBottom: 12 }}>Thông tin cá nhân</h5>
 
-            <PrefillInfo
-                form={form}
-                handleTrackingStart={handleTrackingStart}
-                handleTrackingEnd={handleTrackingEnd}
-                phoneMaxLength={8}
-                phoneRuleMsg="Định dạng của số điện thoại không đúng"
-                nameRuleMsg="Định dạng họ và tên không đúng"
-                idRuleMsg="Định dạng số CMND hoặc CCCD không đúng"
-            />
-
-            <SelectInput
-                size="large"
-                name="marital_status"
-                options={data.marital_status}
-                placeholder="Tình trạng hôn nhân"
-                suffixIcon={<CaretDownOutlined />}
-                initialValue={user?.marital_status}
-                onBlur={() => handleTrackingEnd('marital_status', form.getFieldValue('marital_status'))}
-                onFocus={() => handleTrackingStart('marital_status')}
-                onSelect={(value) => handleTrackingEnd('marital_status', value)}
-            />
-
-            <Form.Item
-                name="birthday"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Bạn chưa chọn ngày sinh',
-                    },
-                    () => ({
-                        validator(_, value) {
-                            const currentYear = new Date().getFullYear();
-                            if (
-                                !value ||
-                                (currentYear - moment(value).year() >= 22 && currentYear - moment(value).year() <= 60)
-                            ) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('Độ tuổi vừa nhập không phù hợp (từ 22-60 tuổi)'));
-                        },
-                    }),
-                ]}
-                initialValue={user?.birthday ? moment(user.birthday, 'DD/MM/YYYYY') : null}
-            >
-                <DatePicker
-                    format="DD/MM/YYYY"
-                    locale={locale}
-                    style={{ width: '100%' }}
-                    placeholder="Ngày sinh"
-                    size="large"
-                    onFocus={() => handleTrackingStart('birthday')}
-                    onBlur={(e) => handleTrackingEnd('birthday', e.target.value)}
-                    onSelect={(e) => handleTrackingEnd('birthday', moment(e).format('DD-MM-YYYY'))}
+                <PrefillInfo
+                    form={form}
+                    handleTrackingStart={handleTrackingStart}
+                    handleTrackingEnd={handleTrackingEnd}
+                    phoneMaxLength={8}
+                    phoneRuleMsg="Định dạng của số điện thoại không đúng"
+                    nameRuleMsg="Định dạng họ và tên không đúng"
+                    idRuleMsg="Định dạng số CMND hoặc CCCD không đúng"
                 />
-            </Form.Item>
 
-            <h5 style={{ fontWeight: 700, marginBottom: 12 }}>Tài khoản</h5>
-
-            <EmailInput
-                size="large"
-                name="email"
-                placeholder="Email"
-                ruleMsg="Định dạng email không đúng"
-                initialValue={user?.email}
-                onFocus={() => handleTrackingStart('email')}
-                onBlur={(e) => handleTrackingEnd('email', e.target.value)}
-            />
-
-            <PasswordInput
-                name="password"
-                pattern={'[a-zA-Z\\d\\W]{4,}'}
-                placeholder="Tạo mật khẩu"
-                size="large"
-                min={4}
-                initialValue={user?.password}
-                maxLength={8}
-                onFocus={() => handleTrackingStart('password')}
-                onBlur={(e) => handleTrackingEnd('password', e.target.value)}
-            />
-
-            <div style={{ display: 'flex', gap: 9, alignItems: 'center', marginBottom: 12 }}>
-                <InfoCircleFilled style={{ fontSize: 14, color: data.primaryColor }} />
-                <span style={{ fontSize: 14 }}>Mật khẩu tối thiểu 04 ký tự</span>
-            </div>
-
-            {/* CONFIRM_PASSWORD */}
-            <Form.Item
-                name="confirm_password"
-                dependencies={['password']}
-                rules={[
-                    {
-                        required: true,
-                        message: 'Bạn chưa nhập mật khẩu',
-                    },
-                    () => ({
-                        validator(_, value) {
-                            if (!value || (value.length >= 4 && /[a-zA-Z\d\W]{4,}/.test(value))) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('Mật khẩu cần tối thiểu 4 ký tự số'));
-                        },
-                    }),
-                    ({ getFieldValue }) => ({
-                        validator(_, value) {
-                            if (
-                                !value ||
-                                getFieldValue('password') === value ||
-                                value.length < 4 ||
-                                !/[a-zA-Z\d\W]{4,}/.test(value)
-                            ) {
-                                return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('Mật khẩu cung cấp không trùng khớp'));
-                        },
-                    }),
-                ]}
-            >
-                <Input.Password
+                <SelectInput
                     size="large"
-                    placeholder="Nhập lại mật khẩu"
-                    onFocus={() => handleTrackingStart('confirm_password')}
-                    onBlur={(e) => handleTrackingEnd('confirm_password', e.target.value)}
+                    name="marital_status"
+                    options={data.marital_status}
+                    placeholder="Tình trạng hôn nhân"
+                    suffixIcon={<CaretDownOutlined />}
+                    initialValue={user?.marital_status}
+                    onBlur={() => handleTrackingEnd('marital_status', form.getFieldValue('marital_status'))}
+                    onFocus={() => handleTrackingStart('marital_status')}
+                    onSelect={(value) => handleTrackingEnd('marital_status', value)}
                 />
-            </Form.Item>
 
-            <Form.Item shouldUpdate>
-                {() => {
-                    return (
-                        <Button
-                            size="large"
-                            style={{ width: '100%', fontWeight: 'bold' }}
-                            disabled={
-                                !(
-                                    form.getFieldValue('name') &&
-                                    form.getFieldValue('address') &&
-                                    form.getFieldValue('phone') &&
-                                    form.getFieldValue('marital_status') &&
-                                    form.getFieldValue('id_card') &&
-                                    form.getFieldValue('birthday') &&
-                                    form.getFieldValue('gender') &&
-                                    form.getFieldValue('email') &&
-                                    form.getFieldValue('password') &&
-                                    form.getFieldValue('confirm_password')
-                                ) || form.getFieldsError().filter(({ errors }) => errors.length).length
-                            }
-                            className={takomoStyle.submit_button}
-                            onClick={handleSubmit}
-                        >
-                            Tiếp tục
-                        </Button>
-                    );
-                }}
-            </Form.Item>
-        </Form>
+                <Form.Item
+                    name="birthday"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Bạn chưa chọn ngày sinh',
+                        },
+                        () => ({
+                            validator(_, value) {
+                                const currentYear = new Date().getFullYear();
+                                if (
+                                    !value ||
+                                    (currentYear - moment(value).year() >= 22 &&
+                                        currentYear - moment(value).year() <= 60)
+                                ) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('Độ tuổi vừa nhập không phù hợp (từ 22-60 tuổi)'));
+                            },
+                        }),
+                    ]}
+                    initialValue={user?.birthday ? moment(user.birthday, 'DD/MM/YYYYY') : null}
+                >
+                    <DatePicker
+                        format="DD/MM/YYYY"
+                        locale={locale}
+                        style={{ width: '100%' }}
+                        placeholder="Ngày sinh"
+                        size="large"
+                        onFocus={() => handleTrackingStart('birthday')}
+                        onBlur={(e) => handleTrackingEnd('birthday', e.target.value)}
+                        onSelect={(e) => handleTrackingEnd('birthday', moment(e).format('DD-MM-YYYY'))}
+                    />
+                </Form.Item>
+
+                <h5 style={{ fontWeight: 700, marginBottom: 12 }}>Tài khoản</h5>
+
+                <EmailInput
+                    size="large"
+                    name="email"
+                    placeholder="Email"
+                    ruleMsg="Định dạng email không đúng"
+                    initialValue={user?.email}
+                    onFocus={() => handleTrackingStart('email')}
+                    onBlur={(e) => handleTrackingEnd('email', e.target.value)}
+                />
+
+                <PasswordInput
+                    name="password"
+                    pattern={'[a-zA-Z\\d\\W]{4,}'}
+                    placeholder="Tạo mật khẩu"
+                    size="large"
+                    min={4}
+                    initialValue={user?.password}
+                    maxLength={8}
+                    onFocus={() => handleTrackingStart('password')}
+                    onBlur={(e) => handleTrackingEnd('password', e.target.value)}
+                />
+
+                <div style={{ display: 'flex', gap: 9, alignItems: 'center', marginBottom: 12 }}>
+                    <InfoCircleFilled style={{ fontSize: 14, color: data.primaryColor }} />
+                    <span style={{ fontSize: 14 }}>Mật khẩu tối thiểu 04 ký tự</span>
+                </div>
+
+                {/* CONFIRM_PASSWORD */}
+                <Form.Item
+                    name="confirm_password"
+                    dependencies={['password']}
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Bạn chưa nhập mật khẩu',
+                        },
+                        () => ({
+                            validator(_, value) {
+                                if (!value || (value.length >= 4 && /[a-zA-Z\d\W]{4,}/.test(value))) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('Mật khẩu cần tối thiểu 4 ký tự số'));
+                            },
+                        }),
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (
+                                    !value ||
+                                    getFieldValue('password') === value ||
+                                    value.length < 4 ||
+                                    !/[a-zA-Z\d\W]{4,}/.test(value)
+                                ) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('Mật khẩu cung cấp không trùng khớp'));
+                            },
+                        }),
+                    ]}
+                >
+                    <Input.Password
+                        size="large"
+                        placeholder="Nhập lại mật khẩu"
+                        onFocus={() => handleTrackingStart('confirm_password')}
+                        onBlur={(e) => handleTrackingEnd('confirm_password', e.target.value)}
+                    />
+                </Form.Item>
+
+                <Form.Item shouldUpdate>
+                    {() => {
+                        return (
+                            <Button
+                                size="large"
+                                style={{ width: '100%', fontWeight: 'bold' }}
+                                disabled={
+                                    !(
+                                        form.getFieldValue('name') &&
+                                        form.getFieldValue('address') &&
+                                        form.getFieldValue('phone') &&
+                                        form.getFieldValue('marital_status') &&
+                                        form.getFieldValue('id_card') &&
+                                        form.getFieldValue('birthday') &&
+                                        form.getFieldValue('gender') &&
+                                        form.getFieldValue('email') &&
+                                        form.getFieldValue('password') &&
+                                        form.getFieldValue('confirm_password')
+                                    ) || form.getFieldsError().filter(({ errors }) => errors.length).length
+                                }
+                                className={takomoStyle.submit_button}
+                                onClick={handleSubmit}
+                            >
+                                Tiếp tục
+                            </Button>
+                        );
+                    }}
+                </Form.Item>
+            </Form>
+        </div>
     );
 };
 

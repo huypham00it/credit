@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import locale from 'antd/lib/locale/vi_VN';
 import 'moment/locale/vi';
 import { Form, ConfigProvider, Grid, Row, Col, Button, Upload, Modal } from 'antd';
 import Image from 'next/image';
@@ -24,7 +23,7 @@ const { useBreakpoint } = Grid;
 
 const Payment = ({ data, user, setUser, submit, prev, handleTrackingStart, handleTrackingEnd, banks }) => {
     const [form] = Form.useForm();
-    const [isBank, setIsBank] = useState(user.isBankPayment);
+    const [isBank, setIsBank] = useState(user.isBankPayment == undefined ? true : user.isBankPayment);
     const [bankList, setBankList] = useState([]);
 
     useEffect(() => {
@@ -210,7 +209,7 @@ const Payment = ({ data, user, setUser, submit, prev, handleTrackingStart, handl
                         setUser({ ...user, back_identity: value });
                     }}
                 />
-                <Row gutter={16}>
+                <Row gutter={16} style={{ marginTop: 16 }}>
                     <Col span={12}>
                         <Button
                             size="large"
