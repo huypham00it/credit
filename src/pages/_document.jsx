@@ -8,6 +8,7 @@ export default function Document() {
     return (
         <Html>
             <Head>
+                <link rel="manifest" href="/manifest.json" />
                 <script async src="/libs/gauge.min.js"></script>
                 <script
                     dangerouslySetInnerHTML={{
