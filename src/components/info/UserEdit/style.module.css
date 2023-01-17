@@ -26,6 +26,10 @@
     background-color: #52c41a;
 }
 
+.phone_tooltip {
+    max-width: 143px;
+}
+
 @keyframes growthWidth {
     0% {
         width: 0%;
