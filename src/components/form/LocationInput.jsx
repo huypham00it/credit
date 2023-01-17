@@ -11,7 +11,17 @@ import styleAutocomplete from '@/assets/AutoComplete.module.css';
 import provinces_data from '@/utils/provinces';
 import useClickOutside from '@/hooks/useClickOutside';
 
-const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddressSelect, initialValue = "", required = true, editable = false, ...props }) => {
+const LocationInput = ({
+    form,
+    edit = true,
+    onChange = undefined,
+    handleIconClick,
+    handleAddressSelect,
+    initialValue = '',
+    required = true,
+    editable = false,
+    ...props
+}) => {
     const [filteredProvinces, setFilteredProvinces] = useState(provinces);
     const [openSuggestions, setOpenSuggestions] = useState(false);
     const [hasProvince, setHasProvince] = useState(true);
@@ -21,18 +31,18 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
 
     useEffect(() => {
         setValue(initialValue);
-    }, [initialValue])
+    }, [initialValue]);
 
     const handleChange = (value) => {
         if (!value.startsWith(' ')) {
             filterOptions(value);
             setValue(value);
             if (onChange) {
-                onChange(value)
+                onChange(value);
             }
         }
         setOpenSuggestions(true);
-    }
+    };
 
     const filterOptions = (province) => {
         let filteredValues = filterProvince(province);
@@ -45,7 +55,7 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
 
         setHasProvince(true);
         setFilteredProvinces(filteredValues);
-    }
+    };
 
     const handleBlur = () => {
         const currentValue = inputRef.current.input.value;
@@ -53,13 +63,17 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
 
         setOpenSuggestions(false);
 
-        if (currentValue != "") {
+        if (currentValue != '') {
             const suggestOption = filteredValues.find((option) => {
-                return (toNonAccentVietnamese(option.value.toLowerCase()).indexOf(toNonAccentVietnamese(currentValue.toLowerCase())) !== -1);
-            })
+                return (
+                    toNonAccentVietnamese(option.value.toLowerCase()).indexOf(
+                        toNonAccentVietnamese(currentValue.toLowerCase()),
+                    ) !== -1
+                );
+            });
 
             if (!suggestOption) {
-                setHasProvince(false)
+                setHasProvince(false);
                 return;
             }
             setHasProvince(true);
@@ -67,12 +81,12 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
             form.setFieldValue(props.name, suggestOption.value);
             return;
         }
-    }
+    };
 
     const handleClick = () => {
         setOpenSuggestions(!openSuggestions);
         window.scrollTo(0, document.body.scrollHeight);
-    }
+    };
 
     const handleSelect = (value) => {
         inputRef.current.focus();
@@ -82,60 +96,69 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
         setHasProvince(true);
         handleAddressSelect(value);
         form.validateFields(['address'])
-        .then()
-        .catch(err => console.log(err))
-    }
+            .then()
+            .catch((err) => console.log(err));
+    };
 
     useClickOutside(cityRef, () => {
         handleBlur();
-    })
+    });
 
     return (
         <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
-            <div
-                className={[props.disabled ? styleAccountInfo.field_disabled : ''].join(' ')}
-                style={{ flex: 1 }}
-            >
+            <div className={[props.disabled ? styleAccountInfo.field_disabled : ''].join(' ')} style={{ flex: 1 }}>
                 <Form.Item
                     className={styleAccountInfo.custom_selectbox}
                     name={props.name}
                     rules={[
                         {
                             required: required,
-                            message: "Bạn chưa chọn Tỉnh/Thành phố"
+                            message: 'Bạn chưa chọn Tỉnh/Thành phố',
                         },
                         () => ({
                             validator(_, value) {
                                 if (!value || hasProvince) {
                                     return Promise.resolve();
                                 }
-                                return Promise.reject("Vui lòng chọn Tỉnh/Thành phố");
+                                return Promise.reject('Vui lòng chọn Tỉnh/Thành phố');
                             },
                         }),
                     ]}
                 >
-                    <div style={{
-                        position: 'relative',
-                    }}
-
+                    <div
+                        style={{
+                            position: 'relative',
+                        }}
                         ref={cityRef}
                     >
-                        <div className={openSuggestions ? styleAutocomplete.suggestions_wrapper : styleAutocomplete.suggestions_hide}>
-                            {filteredProvinces.length > 0 && hasProvince && filteredProvinces.map((option, i) => (
-                                <div key={i} className={signupStyle.province_suggestion__item} onClick={() => handleSelect(option.value)}>
-                                    {option.label}
-                                </div>
-                            ))}
+                        <div
+                            className={
+                                openSuggestions
+                                    ? styleAutocomplete.suggestions_wrapper
+                                    : styleAutocomplete.suggestions_hide
+                            }
+                        >
+                            {filteredProvinces.length > 0 &&
+                                hasProvince &&
+                                filteredProvinces.map((option, i) => (
+                                    <div
+                                        key={i}
+                                        className={signupStyle.province_suggestion__item}
+                                        onClick={() => handleSelect(option.value)}
+                                    >
+                                        {option.label}
+                                    </div>
+                                ))}
 
                             {!hasProvince && (
-                                <div className={signupStyle.province_suggestion__item} style={{ color: "#00000073" }}>
+                                <div className={signupStyle.province_suggestion__item} style={{ color: '#00000073' }}>
                                     Không tìm thấy
                                 </div>
                             )}
                         </div>
 
                         <Input
-                            autoComplete='off'
+                            autoComplete="off"
                             ref={inputRef}
                             value={value}
                             placeholder="Chọn Tỉnh/Thành phố"
@@ -144,16 +167,23 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
                             disabled={props.disabled}
                             onPressEnter={handleBlur}
                             {...props}
-                            addonAfter={editable ?
-                                <EditOutlined style={{ color: !props.disabled ? '#594DC9' : "" }}
-                                    onClick={() => {
-                                        if (editable) {
-                                            setOpenSuggestions(false);
-                                        }
-                                        handleIconClick();
-                                    }}
-                                />
-                                : <></>}
+                            addonAfter={
+                                editable ? (
+                                    <EditOutlined
+                                        style={{ color: !props.disabled ? '#594DC9' : '' }}
+                                        onClick={() => {
+                                            if (editable) {
+                                                setOpenSuggestions(false);
+                                            }
+                                            handleIconClick();
+                                        }}
+                                    />
+                                ) : edit ? (
+                                    <></>
+                                ) : (
+                                    false
+                                )
+                            }
                         />
 
                         <DownOutlined
@@ -162,15 +192,14 @@ const LocationInput = ({ form, onChange = undefined, handleIconClick, handleAddr
                                 right: editable ? 50 : 11,
                                 top: '50%',
                                 transform: 'translateY(-50%)',
-                                color: "#d9d9d9"
+                                color: '#d9d9d9',
                             }}
                         />
-
                     </div>
                 </Form.Item>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default LocationInput
+export default LocationInput;

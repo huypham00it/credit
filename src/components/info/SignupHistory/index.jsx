@@ -58,9 +58,9 @@ const SignupHistory = (props) => {
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: false, amount: 0.25 }}
+                viewport={{ once: true, amount: 0.25 }}
             >
-                <motion.div variants={fadeIn('up', 'tween', 0.2, 0.5)}>
+                <motion.div variants={fadeIn('down', 'tween', 0.2, 0.5)}>
                     <div
                         style={{ maxWidth: 696, margin: '0 auto', marginLeft: maxW374 ? 16 : 'auto' }}
                         id="signup-history"

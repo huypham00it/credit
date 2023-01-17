@@ -1,0 +1,37 @@
+.form svg {
+    color: #594dc9;
+}
+
+.notification_error,
+.notification_success {
+    position: relative;
+}
+
+.notification_error::after,
+.notification_success::after {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    height: 3px;
+    animation: growthWidth 4.5s linear;
+}
+
+.notification_error::after {
+    background-color: #fd4363;
+}
+
+.notification_success::after {
+    background-color: #52c41a;
+}
+
+@keyframes growthWidth {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}

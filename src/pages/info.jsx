@@ -15,6 +15,8 @@ import { useMediaQuery } from '@/hooks/useMediaQuery.jsx';
 import title from '@/configs/title';
 import SignupHistory from '@/components/info/SignupHistory';
 import moment from 'moment';
+import { EditOutlined } from '@ant-design/icons';
+import UserEdit from '@/components/info/UserEdit';
 
 const { Text, Title } = Typography;
 const { useBreakpoint } = Grid;
@@ -43,6 +45,7 @@ function AccountInfo() {
     const minW768 = useMediaQuery('(min-width:768px)');
     const [userHistories, setUserHistories] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [editing, setEditing] = useState(false);
 
     const account_info = [
         { text: user.name, icon: '/images/icon_name.svg' },
@@ -137,18 +140,48 @@ function AccountInfo() {
                         {title_account.title}
                     </Title>
                 </div>
-                {account_info.map((item, index) => (
-                    <AccountItem key={index} text={item.text} icon={item.icon} />
-                ))}
-                <div
-                    style={{
-                        textAlign: 'center',
-                    }}
-                >
-                    <Button onClick={logout} className={styleAccount.btn_logout}>
-                        {title_account.button_logout}
-                    </Button>
-                </div>
+                {!editing ? (
+                    <>
+                        {account_info.map((item, index) => (
+                            <AccountItem key={index} text={item.text} icon={item.icon} />
+                        ))}
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: 16,
+                                marginTop: '22px',
+                            }}
+                        >
+                            <Button
+                                type="primary"
+                                block
+                                icon={<EditOutlined />}
+                                size="large"
+                                onClick={() => setEditing(true)}
+                            >
+                                {title_account.edit_account}
+                            </Button>
+                            <Button
+                                onClick={logout}
+                                block
+                                size="large"
+                                danger
+                                type="text"
+                                className={styleAccount.btn_logout}
+                            >
+                                {title_account.button_logout}
+                            </Button>
+                        </div>
+                    </>
+                ) : (
+                    <UserEdit
+                        user={user}
+                        setUser={setUser}
+                        handleCancel={() => setEditing(false)}
+                        handleSuccess={() => setEditing(false)}
+                    />
+                )}
             </Card>
 
             {!loading && <SignupHistory data={userHistories} />}
