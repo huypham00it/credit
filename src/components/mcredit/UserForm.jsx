@@ -107,12 +107,7 @@ export default function UserForm() {
                     name="mcredit_form"
                     onSubmitCapture={handleSubmit}
                 >
-                    <AccountInfo
-                        user={user}
-                        form={form}
-                        handleTrackingStart={handleTrackingStart}
-                        handleTrackingEnd={handleTrackingEnd}
-                    />
+                    <AccountInfo user={user} form={form} />
 
                     <p style={{ fontSize: '14px' }}>Vui lòng nhập đúng thông tin sau để tiếp tục</p>
 
