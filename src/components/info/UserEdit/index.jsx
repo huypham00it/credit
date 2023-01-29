@@ -52,6 +52,18 @@ const UserEdit = ({ user, handleCancel, setUser, handleSuccess }) => {
             });
     };
 
+    const isChangedInfo = (formData) => {
+        let change = false;
+        let currentData = formData.getFieldsValue();
+
+        for (const key in currentData) {
+            if (currentData[key] !== user[key]) {
+                change = true;
+            }
+        }
+        return !change;
+    };
+
     return (
         <Form form={form} className={style.form} name="account_form" onFinish={handleFinish}>
             <Form.Item
@@ -177,7 +189,9 @@ const UserEdit = ({ user, handleCancel, setUser, handleSuccess }) => {
                                             form.getFieldValue('phone') &&
                                             form.getFieldValue('gender') &&
                                             form.getFieldValue('id_card')
-                                        ) || form.getFieldsError().filter(({ errors }) => errors.length).length
+                                        ) ||
+                                        form.getFieldsError().filter(({ errors }) => errors.length).length ||
+                                        isChangedInfo(form)
                                     }
                                 >
                                     Lưu
