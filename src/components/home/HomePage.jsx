@@ -172,7 +172,7 @@ const LoansList = ({ loans }) => {
     const cookies = new Cookies();
     const { showLoading, hideLoading } = useLoading();
     const click_id = cookies.get('click_id');
-    const flow_id = cookies.get('flow_id');
+    // const flow_id = cookies.get('flow_id');
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [signUpItem, setSignupItem] = useState({});
     const [form] = Form.useForm();
@@ -273,13 +273,7 @@ const LoansList = ({ loans }) => {
                                 type="primary"
                                 className={StyleHome.button}
                                 onClick={() => {
-                                    const testEmail = document.getElementsByClassName('test-email')[0];
-
-                                    if (testEmail) {
-                                        handleSignUp(loan);
-                                    } else {
-                                        getOffer(loan);
-                                    }
+                                    handleSignUp(loan);
                                 }}
                                 id={SLUGID.LOAN_SIGN_UP + loan.offer_id}
                             >
