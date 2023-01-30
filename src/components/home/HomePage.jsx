@@ -172,7 +172,6 @@ const LoansList = ({ loans }) => {
     const cookies = new Cookies();
     const { showLoading, hideLoading } = useLoading();
     const click_id = cookies.get('click_id');
-    // const flow_id = cookies.get('flow_id');
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [signUpItem, setSignupItem] = useState({});
     const [form] = Form.useForm();
