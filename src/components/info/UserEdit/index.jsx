@@ -25,11 +25,13 @@ const UserEdit = ({ user, handleCancel, setUser, handleSuccess }) => {
     const [loading, setLoading] = useState(false);
 
     const handleFinish = (values) => {
+        let data = values;
+        Object.keys(data).forEach((k) => (data[k] = data[k].trim()));
         setLoading(true);
-        delete values.phone;
+        delete data.phone;
 
         request
-            .post('/update_info', values)
+            .post('/update_info', data)
             .then((res) => {
                 setUser(res.data.data);
                 notification.success({
@@ -57,7 +59,7 @@ const UserEdit = ({ user, handleCancel, setUser, handleSuccess }) => {
         let currentData = formData.getFieldsValue();
 
         for (const key in currentData) {
-            if (currentData[key] !== user[key]) {
+            if (currentData[key].trim() !== user[key]) {
                 change = true;
             }
         }
