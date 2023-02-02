@@ -140,7 +140,7 @@ export default {
             href: "https://goo.gl/maps/Hf2HVDbhSWFEpCfd6"
         }
     },
-    copyright: "Copyright © 2022 Credit.vn",
+    copyright: "Powered by RIO Technology © 2022 Credit.vn",
     test: {
         label: "Kiểm tra ngay",
         href: "https://credit.vn"

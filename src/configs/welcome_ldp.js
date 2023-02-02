@@ -141,7 +141,7 @@ export default {
             href: "https://goo.gl/maps/Hf2HVDbhSWFEpCfd6"
         }
     },
-    copyright: "Copyright © 2022 Credit.vn",
+    copyright: "Powered by RIO Technology © 2022 Credit.vn",
     start: {
         label: "Bắt đầu",
         href: "https://credit.vn"

@@ -28,7 +28,9 @@ const FooterComponent = () => {
                         </Title>
                     </Col>
                 </Row>
-                <Row className={style.footer_bottom}>Copyright © {new Date().getFullYear()} Credit.vn</Row>
+                <Row className={style.footer_bottom}>
+                    Powered by RIO Technology © {new Date().getFullYear()} Credit.vn
+                </Row>
             </div>
         </Footer>
     );
