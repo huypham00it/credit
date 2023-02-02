@@ -10,7 +10,7 @@ import { UserInfo } from '@/contexts/user';
 import request from '@/utils/request';
 import { useLoading } from '@/contexts/loading';
 import Cookies from 'universal-cookie';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Bubble from './Bubble';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
@@ -18,6 +18,7 @@ import { Grid } from 'antd';
 import title from '@/configs/title';
 import Head from 'next/head';
 import { EmailInput } from '../form';
+import Link from 'next/link';
 
 const { useBreakpoint } = Grid;
 
@@ -76,6 +77,7 @@ const CreditScore = ({ score, large }) => {
     const [openBubble, setOpenBubble] = useState(true);
     const minW768 = useMediaQuery('(min-width:768px)');
     const screen = useBreakpoint();
+    const router = useRouter();
 
     const score_lst = {
         Low: {
@@ -149,6 +151,24 @@ const CreditScore = ({ score, large }) => {
                 <div>
                     <GaugeComponent score={score_lst[score]} />
                 </div>
+                <div
+                    style={{
+                        position: 'absolute',
+                        bottom: 10,
+                        left: 0,
+                        width: '100%',
+                        textAlign: 'center',
+                    }}
+                >
+                    <p
+                        className={StyleHome.text_link}
+                        onClick={() => {
+                            router.push('/diem-tin-dung');
+                        }}
+                    >
+                        Vì sao điểm tín dụng của bạn <span>{score_lst[score].title}</span>
+                    </p>
+                </div>
 
                 {/* Survey Bubble Mobile */}
 
@@ -172,6 +192,7 @@ const LoansList = ({ loans }) => {
     const cookies = new Cookies();
     const { showLoading, hideLoading } = useLoading();
     const click_id = cookies.get('click_id');
+    // const flow_id = cookies.get('flow_id');
     const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
     const [signUpItem, setSignupItem] = useState({});
     const [form] = Form.useForm();

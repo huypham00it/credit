@@ -1,0 +1,31 @@
+.header {
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    z-index: 10;
+    transition: all linear 0.3s;
+}
+
+.header.fixed {
+    box-shadow: 0px 2px 8px var(--gray-color);
+    background: var(--primary-color);
+}
+
+.header_inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.logo {
+    cursor: pointer;
+}

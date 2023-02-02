@@ -53,7 +53,6 @@ export default function UserForm() {
         const data = { ...form.getFieldsValue(), birthday: form.getFieldValue('birthday').format('DD-MM-YYYY') };
         data.offer_id = offer_id;
         data.click_id = click_id;
-        console.log(data);
         showLoading();
         request
             .post('/lead', data)
@@ -72,11 +71,14 @@ export default function UserForm() {
                 });
             })
             .catch(function (error) {
-                console.log(error);
+                let modalContent = 'Có lỗi xảy ra, xin vui lòng thử lại sau ít phút';
+                if (error.response.data.message == 'Phone number was submitted in the last 90 days') {
+                    modalContent = 'Tên của bạn đã có trong hệ thống của MCredit. Vui lòng chọn khoản vay khác.';
+                }
                 hideLoading();
                 Modal.error({
                     title: 'Đăng ký thất bại',
-                    content: 'Có lỗi xảy ra, xin vui lòng thử lại sau ít phút',
+                    content: modalContent,
                     okText: 'Xác nhận',
                     okButtonProps: { id: SLUGID.CONFIRM_ERROR + offer_id },
                 });

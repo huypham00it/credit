@@ -1,0 +1,82 @@
+.credit_score_wrap {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.cut_circ {
+    position: absolute;
+    width: 218px;
+    height: 218px;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(220.5deg);
+}
+
+.cut_circ > div > div > h2 {
+    font-size: 14px;
+}
+
+.cut_circ_320 > div > div > h2 {
+    font-size: 13px;
+}
+
+.credit_inner {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-221deg);
+    padding: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.credit_inner_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cut_circ > div > div > h1 {
+    font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+    .credit_score_wrap {
+        max-width: 732px;
+        margin: 0 auto;
+    }
+
+    .cut_circ {
+        width: 260px;
+        height: 260px;
+    }
+
+    .cut_circ > div > div > h2 {
+        font-size: 16px;
+    }
+
+    .cut_circ > div > div > h1 {
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .credit_inner {
+        padding: 12px;
+    }
+}

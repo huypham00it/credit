@@ -1,0 +1,8 @@
+.layout {
+    min-height: 100vh;
+}
+
+.content {
+    background-color: transparent;
+    z-index: 1;
+}

@@ -4,8 +4,17 @@ import PropTypes from 'prop-types';
 
 import validText from '@/utils/validText';
 
-const TextInput = ({name, required = true, pattern = "", required_message, error_message, initialValue = "", ...props }) => {
-
+const TextInput = ({
+    name,
+    className = '',
+    label = false,
+    required = true,
+    pattern = '',
+    required_message,
+    error_message,
+    initialValue = '',
+    ...props
+}) => {
     return (
         <Form.Item
             name={name}
@@ -23,15 +32,14 @@ const TextInput = ({name, required = true, pattern = "", required_message, error
                     },
                 }),
             ]}
+            className={className}
+            label={label}
             initialValue={initialValue}
         >
-            <Input
-                autoComplete='off'
-                {...props}
-            />
+            <Input autoComplete="off" {...props} />
         </Form.Item>
-    )
-}
+    );
+};
 
 export default TextInput;
 
@@ -39,4 +47,4 @@ TextInput.propTypes = {
     name: PropTypes.string,
     required_message: PropTypes.string,
     error_message: PropTypes.string,
-}
+};

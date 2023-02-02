@@ -3,10 +3,21 @@ import { Form, Input } from 'antd';
 
 import validName from '@/utils/validName';
 
-const NameInput = ({ required = true, name, initialValue, requiredMsg, ruleMsg, ...props }) => {
+const NameInput = ({
+    required = true,
+    label = false,
+    className,
+    name,
+    initialValue,
+    requiredMsg,
+    ruleMsg,
+    ...props
+}) => {
     return (
         <Form.Item
             name={name}
+            label={label}
+            className={className}
             rules={[
                 {
                     required: required,

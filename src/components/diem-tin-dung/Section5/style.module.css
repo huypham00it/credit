@@ -1,0 +1,147 @@
+.section {
+    padding: 124px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 60px !important;
+    color: var(--primary-color) !important;
+    margin-bottom: 36px !important;
+}
+
+.card {
+    margin-top: 24px;
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+}
+
+.card_title {
+    color: var(--primary-color) !important;
+    text-align: center;
+    white-space: break-spaces;
+}
+
+.card_content {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+}
+
+.card_content__paragraph {
+    white-space: break-spaces;
+    margin-bottom: 0 !important;
+}
+
+.card_content svg {
+    height: 55px;
+    width: 70px;
+    color: var(--primary-color);
+}
+
+.form {
+    box-shadow: 0px 16px 72px rgba(6, 28, 61, 0.08);
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.form_heading {
+    color: var(--primary-color) !important;
+}
+
+.form_subheading {
+    font-weight: 700 !important;
+}
+
+.form_button {
+    width: 208px;
+    height: 56px;
+    margin-top: 24px;
+}
+
+.input_field > div {
+    flex-direction: column;
+}
+
+.input_field > div > div:first-child {
+    text-align: left;
+    background-color: var(--white-color);
+}
+
+.input_field label::before {
+    display: none !important;
+}
+
+h1.score {
+    font-size: 24px !important;
+}
+
+h1.score_lg {
+    font-size: 36px !important;
+}
+
+.offers {
+    padding: 16px;
+    background-color: var(--white-gray);
+    border-radius: 8px;
+    box-shadow: 0px 16px 72px rgba(6, 28, 61, 0.08);
+    margin-top: 24px;
+}
+
+.offers_heading {
+    white-space: break-spaces;
+    color: var(--primary-color) !important;
+    text-align: center;
+}
+
+@media screen and (max-width: 75rem) {
+    .section {
+        padding: 72px 16px 40px;
+    }
+
+    .heading {
+        font-size: 30px !important;
+        margin-bottom: 16px !important;
+        text-align: center;
+    }
+
+    h1.score {
+        font-size: 20px !important;
+    }
+
+    .card_title {
+        font-size: 20px !important;
+    }
+
+    .card_content__paragraph {
+        text-align: center;
+    }
+
+    .offers {
+        padding: 0;
+    }
+
+    .offers_heading {
+        font-size: 20px !important;
+    }
+
+    .form {
+        padding: 0;
+    }
+
+    .form_heading {
+        font-size: 24px !important;
+    }
+
+    .form > div {
+        padding: 16px;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    .form_button {
+        width: 100%;
+    }
+}

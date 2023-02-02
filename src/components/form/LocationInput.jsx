@@ -20,6 +20,9 @@ const LocationInput = ({
     initialValue = '',
     required = true,
     editable = false,
+    label = false,
+    className = '',
+    customItemStyle,
     ...props
 }) => {
     const [filteredProvinces, setFilteredProvinces] = useState(provinces);
@@ -105,11 +108,20 @@ const LocationInput = ({
     });
 
     return (
-        <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
+        <div
+            style={{
+                position: 'relative',
+                display: 'flex',
+                justifyContent: 'space-between',
+                marginBottom: 24,
+                ...customItemStyle,
+            }}
+        >
             <div className={[props.disabled ? styleAccountInfo.field_disabled : ''].join(' ')} style={{ flex: 1 }}>
                 <Form.Item
-                    className={styleAccountInfo.custom_selectbox}
+                    className={[styleAccountInfo.custom_selectbox, className].join(' ')}
                     name={props.name}
+                    label={label}
                     rules={[
                         {
                             required: required,

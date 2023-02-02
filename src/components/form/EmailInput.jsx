@@ -1,10 +1,12 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 
-const EmailInput = ({ initialValue = '', required = true, ruleMsg, ...props }) => {
+const EmailInput = ({ initialValue = '', label = false, className = '', required = true, ruleMsg, ...props }) => {
     return (
         <Form.Item
             name={props.name}
+            className={className}
+            label={label}
             rules={[
                 {
                     required: required,

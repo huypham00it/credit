@@ -1,0 +1,118 @@
+.section {
+    padding: 124px 0;
+}
+
+.heading {
+    font-size: 60px !important;
+    color: var(--primary-color) !important;
+    margin-bottom: 32px !important;
+}
+
+.head_paragraph {
+    padding-left: 24px;
+    font-family: Montserrat !important;
+    border-left: 2px solid var(--primary-color);
+}
+
+.sub_heading {
+    margin: 32px 0 !important;
+    color: var(--primary-color) !important;
+}
+
+.items_group {
+    background: var(--secondary-color);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 60px;
+}
+
+.items_group::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 64px);
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.85);
+    transform: translate(-50%, -50%);
+}
+
+.items_group > div {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.item_icon svg {
+    height: 30px;
+    width: 30px;
+    color: var(--primary-color);
+}
+
+.item_text {
+    font-family: Montserrat !important;
+}
+
+.footer {
+    margin-top: 60px;
+}
+
+.footer_content {
+    background-color: var(--light-warning-color);
+    border-radius: 16px;
+    white-space: break-spaces;
+    text-align: center;
+    padding: 32px;
+    font-family: Montserrat;
+}
+
+@media screen and (max-width: 75rem) {
+    .section {
+        padding: 24px 16px 64px;
+    }
+
+    .heading {
+        font-size: 30px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .head_paragraph {
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .sub_heading {
+        font-size: 20px !important;
+        margin: 24px 0 16px !important;
+    }
+
+    .items_group {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .items_group > div {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .items_group > div:first-child {
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.85);
+    }
+
+    .items_group::after {
+        display: none;
+    }
+
+    .footer {
+        margin-top: 16px;
+    }
+
+    .footer_content {
+        text-align: justify;
+    }
+}
