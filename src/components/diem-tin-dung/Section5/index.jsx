@@ -156,7 +156,7 @@ const Section5 = ({ provinces }) => {
                     }
 
                     let intervalId = setInterval(() => {
-                        if (load > currentScore) {
+                        if (load >= currentScore) {
                             clearInterval(intervalId);
                         }
                         setScore(load++);
