@@ -24,8 +24,56 @@
     margin: 0 auto;
     padding-left: 16px;
     padding-right: 16px;
+    justify-content: space-between;
+}
+
+.header_inner > div {
+    display: flex;
+    align-items: center;
 }
 
 .logo {
     cursor: pointer;
+}
+
+.humburger {
+    display: none;
+    color: var(--white-color);
+}
+
+.mobile_nav {
+    display: none;
+}
+
+@media screen and (max-width: 748px) {
+    .humburger {
+        display: inline-block;
+    }
+
+    .humburger svg {
+        height: 24px;
+        width: 24px;
+    }
+
+    .mobile_nav {
+        display: block;
+        position: absolute;
+        min-width: 300px;
+        padding: 16px;
+        top: 100%;
+        right: 0;
+        background-color: var(--secondary-color);
+        transition: all 0.3s;
+        transform: translateX(100%);
+        border-bottom-left-radius: 4px;
+    }
+
+    .mobile_nav.active {
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+        transform: translateX(0);
+    }
+
+    .link_active {
+        color: var(--primary-color);
+    }
 }

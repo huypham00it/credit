@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
-const GaugeComponent = ({ score, hasLimit = false, hideGaugeDefault = false, ...props }) => {
+const GaugeComponent = ({ score, hideGaugeDefault = false, ...props }) => {
     const minW768 = useMediaQuery('(min-width:768px)');
 
     var opts = {
@@ -33,76 +33,7 @@ const GaugeComponent = ({ score, hasLimit = false, hideGaugeDefault = false, ...
         gauge.setMinValue(0);
         gauge.set(0); // not important
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        if (hasLimit) {
-            var radius = target.height / 1.9;
-            var ctx = target.getContext('2d');
-
-            ctx.translate(radius, radius);
-            drawNumbers(ctx, radius);
-        }
     }, [score]);
-
-    const drawNumbers = (ctx, radius) => {
-        var ang;
-        ctx.font = minW768 ? 'bold 16px arial' : 'bold 24px arial';
-        ctx.textBaseline = 'middle';
-        ctx.textAlign = 'center';
-
-        let num = 7;
-        ang = (num * Math.PI) / 5.6;
-        ctx.fillStyle = '#CF1322';
-        ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.74);
-        ctx.rotate(-ang);
-        ctx.fillText(0, 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius);
-        ctx.rotate(-ang);
-
-        num = 5;
-        ang = (num * Math.PI) / 5.6;
-        ctx.fillStyle = '#1D39C4';
-        ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.74);
-        ctx.rotate(-ang);
-        ctx.fillText(100, 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius);
-        ctx.rotate(-ang);
-
-        num = 8;
-        ang = (num * Math.PI) / 5.5;
-        ctx.fillStyle = '#D46B08';
-        ctx.rotate(ang);
-        ctx.translate(-27, -radius * 0.82);
-        ctx.rotate(-ang);
-        ctx.fillText(25, 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius);
-        ctx.rotate(-ang);
-
-        num = 3;
-        ang = (num * Math.PI) / 4.8;
-        ctx.fillStyle = '#13C2C2';
-        ctx.rotate(ang);
-        ctx.translate(5, -radius * 0.32);
-        ctx.rotate(-ang);
-        ctx.fillText(75, 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius);
-        ctx.rotate(-ang);
-
-        num = 12;
-        ang = minW768 ? (num * Math.PI) / 4.55 : (num * Math.PI) / 4.59;
-        ctx.fillStyle = '#52C41A';
-        ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.325);
-        ctx.rotate(-ang);
-        ctx.fillText(50, 0, -45);
-        ctx.rotate(ang);
-        ctx.translate(0, radius);
-        ctx.rotate(-ang);
-    };
 
     return minW768 ? (
         <canvas

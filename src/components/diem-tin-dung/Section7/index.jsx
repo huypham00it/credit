@@ -17,6 +17,7 @@ const Section7 = () => {
             style={{
                 backgroundImage: 'url(' + bg.src + ')',
             }}
+            id="criterial"
         >
             <div className="container">
                 <Row gutter={32}>

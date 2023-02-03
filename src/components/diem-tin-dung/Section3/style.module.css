@@ -12,8 +12,9 @@
 
 .paragraph {
     padding-left: 20px;
-    border-left: 2px solid var(--primary-color);
+    border-left: 4px solid var(--primary-color);
     margin-bottom: 36px !important;
+    white-space: break-spaces;
 }
 
 .button {

@@ -34,7 +34,7 @@ export const Gauge = ({ radius, percent = 0, customStyle, ...rest }) => {
 
     return (
         <>
-            <div style={customStyle}>
+            <div style={customStyle} className={style.wrapper}>
                 <svg height={radius * 2} width={radius * 2}>
                     {[25, 50, 75, 100].map((item, index) => (
                         <circle
@@ -71,6 +71,12 @@ export const Gauge = ({ radius, percent = 0, customStyle, ...rest }) => {
                         }}
                     />
                 </svg>
+
+                <span className={style.index_value}>0</span>
+                <span className={style.index_value}>25</span>
+                <span className={style.index_value}>50</span>
+                <span className={style.index_value}>75</span>
+                <span className={style.index_value}>100</span>
             </div>
         </>
     );

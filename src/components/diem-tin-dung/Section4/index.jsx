@@ -8,7 +8,7 @@ const { Title, Paragraph } = Typography;
 
 const Section4 = () => {
     return (
-        <section className={style.section}>
+        <section className={style.section} id="method">
             <div className="container">
                 <Title level={2} className={style.heading}>
                     {data.section_04.heading}

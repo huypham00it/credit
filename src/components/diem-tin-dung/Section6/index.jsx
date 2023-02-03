@@ -11,7 +11,7 @@ const data = dataConfig.section_06;
 
 const Section6 = () => {
     return (
-        <section className={style.section}>
+        <section className={style.section} id="rank">
             <div className="container">
                 <Row gutter={136}>
                     <Col span={24} xl={9}>

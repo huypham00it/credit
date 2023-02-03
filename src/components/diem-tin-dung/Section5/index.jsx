@@ -123,6 +123,10 @@ const Section5 = ({ provinces }) => {
             });
     };
 
+    const handleScrollToScoring = () => {
+        document.body.scrollTop = document.getElementById('diem-tin-dung').offsetTop - 64;
+    };
+
     const handleFinish = (values) => {
         if (score === false) {
             setLoading(true);
@@ -163,7 +167,7 @@ const Section5 = ({ provinces }) => {
                     }, 30);
 
                     setFormDisabled(true);
-                    Router.push('#diem-tin-dung');
+                    handleScrollToScoring();
                 })
                 .catch(() => {
                     notification.error({
@@ -175,7 +179,7 @@ const Section5 = ({ provinces }) => {
                     setLoading(false);
                 });
         } else {
-            Router.push('#diem-tin-dung');
+            handleScrollToScoring();
         }
     };
 
@@ -188,7 +192,6 @@ const Section5 = ({ provinces }) => {
                         <div style={{ position: 'relative' }}>
                             <GaugeScoring
                                 hideGaugeDefault={true}
-                                hasLimit={true}
                                 number={score}
                                 score={score != false ? user.credit_scoring : 'unknown'}
                                 scoreClass={score === false ? style.score : style.score_lg}

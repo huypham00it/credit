@@ -9,7 +9,7 @@ const { useBreakpoint } = Grid;
 const Section2 = () => {
     const screen = useBreakpoint();
     return (
-        <section className={style.section}>
+        <section className={style.section} id="info">
             <div className="container">
                 <Row gutter={42}>
                     <Col order={screen.xl ? 1 : 2} span={24} xl={10}>

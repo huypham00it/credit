@@ -12,7 +12,7 @@ const DesktopLayout = (props) => {
         <>
             <SEO title={props.title} />
             <Layout id={props.id} className={[style.layout, props.customClass].join(' ')}>
-                <HeaderComponent />
+                <HeaderComponent menu={props.headerMenu} />
                 <Content className={style.content}>{props.children}</Content>
                 <FooterComponent />
             </Layout>
