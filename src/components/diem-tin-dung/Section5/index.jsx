@@ -253,7 +253,7 @@ const Section5 = ({ provinces }) => {
                                 </Title>
 
                                 <Row gutter={16}>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <NameInput
                                             className={style.input_field}
                                             label={data.form_01.name.label}
@@ -264,7 +264,7 @@ const Section5 = ({ provinces }) => {
                                             disabled
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <EmailInput
                                             className={style.input_field}
                                             label={data.form_01.email.label}
@@ -275,7 +275,7 @@ const Section5 = ({ provinces }) => {
                                             disabled={user?.email ? true : false}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <LocationInput
                                             className={style.input_field}
                                             label={data.form_01.address.label}
@@ -296,7 +296,7 @@ const Section5 = ({ provinces }) => {
                                         />
                                     </Col>
 
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             className={style.input_field}
                                             label={data.form_01.district.label}
@@ -307,7 +307,7 @@ const Section5 = ({ provinces }) => {
                                             placeholder={data.form_01.district.placeholder}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             label={data.form_01.ward.label}
                                             className={style.input_field}
@@ -319,7 +319,7 @@ const Section5 = ({ provinces }) => {
                                         />
                                     </Col>
 
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <BaseInput
                                             className={style.input_field}
                                             name="address"
@@ -329,7 +329,7 @@ const Section5 = ({ provinces }) => {
                                             required_message={data.form_01.house_number.required_message}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <BaseInput
                                             name="income"
                                             type="number"
@@ -348,7 +348,7 @@ const Section5 = ({ provinces }) => {
                                         />
                                     </Col>
 
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             label={data.form_01.martial_status.label}
                                             className={style.input_field}
@@ -358,7 +358,7 @@ const Section5 = ({ provinces }) => {
                                             options={data.form_01.martial_status.options}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             label={data.form_01.purpose.label}
                                             className={style.input_field}
@@ -376,7 +376,7 @@ const Section5 = ({ provinces }) => {
                                 </Title>
 
                                 <Row gutter={16}>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             className={style.input_field}
                                             label={data.form_02.debt_type.label}
@@ -386,7 +386,7 @@ const Section5 = ({ provinces }) => {
                                             options={data.form_02.debt_type.options}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <BaseInput
                                             name="debt_month"
                                             type="number"
@@ -405,7 +405,7 @@ const Section5 = ({ provinces }) => {
                                         />
                                     </Col>
 
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             label={data.form_02.e_wallet.label}
                                             className={style.input_field}
@@ -423,7 +423,7 @@ const Section5 = ({ provinces }) => {
                                 </Title>
 
                                 <Row gutter={16}>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             className={style.input_field}
                                             label={data.form_03.job.label}
@@ -433,7 +433,7 @@ const Section5 = ({ provinces }) => {
                                             options={data.form_03.job.options}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             className={style.input_field}
                                             label={data.form_03.field.label}
@@ -444,7 +444,7 @@ const Section5 = ({ provinces }) => {
                                         />
                                     </Col>
 
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <BaseInput
                                             name="company"
                                             size="large"
@@ -454,7 +454,7 @@ const Section5 = ({ provinces }) => {
                                             required={false}
                                         />
                                     </Col>
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <TextInput
                                             className={style.input_field}
                                             size="large"
@@ -466,7 +466,7 @@ const Section5 = ({ provinces }) => {
                                         />
                                     </Col>
 
-                                    <Col span={24} xl={12}>
+                                    <Col span={24} md={12}>
                                         <SelectInput
                                             className={style.input_field}
                                             label={data.form_03.experience.label}

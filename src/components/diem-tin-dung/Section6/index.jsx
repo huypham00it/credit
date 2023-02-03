@@ -26,23 +26,23 @@ const Section6 = () => {
                         <Row gutter={[24, 24]} align="middle">
                             <Col span={24} xl={12}>
                                 <Row gutter={[24, 24]}>
-                                    <Col span={24}>
+                                    <Col span={24} md={12} xl={24}>
                                         <CardComp data={data.items[0]} />
                                     </Col>
-                                    <Col span={24}>
+                                    <Col span={24} md={12} xl={24}>
                                         <CardComp data={data.items[1]} />
                                     </Col>
                                 </Row>
                             </Col>
                             <Col span={24} xl={12}>
                                 <Row gutter={[24, 24]}>
-                                    <Col span={24}>
+                                    <Col span={24} md={12} xl={24}>
                                         <CardComp data={data.items[2]} />
                                     </Col>
-                                    <Col span={24}>
+                                    <Col span={24} md={12} xl={24}>
                                         <CardComp data={data.items[3]} />
                                     </Col>
-                                    <Col span={24}>
+                                    <Col span={24} md={12} xl={24}>
                                         <CardComp data={data.items[4]} />
                                     </Col>
                                 </Row>

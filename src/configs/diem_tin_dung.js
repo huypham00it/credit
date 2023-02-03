@@ -197,7 +197,6 @@ const data = {
                     { label: "123Pay", value: "123Pay" },
                     { label: "NPay", value: "NPay" },
                     { label: "VinID", value: "VinID" },
-                    { label: "VTC Pay", value: "VTC Pay" },
                     { label: "PayAQ", value: "PayAQ" },
                 ]
             }
