@@ -44,7 +44,7 @@ const GaugeComponent = ({ score, hasLimit = false, hideGaugeDefault = false, ...
 
     const drawNumbers = (ctx, radius) => {
         var ang;
-        ctx.font = minW768 ? 'bold 16px arial' : 'bold 20px arial';
+        ctx.font = minW768 ? 'bold 16px arial' : 'bold 24px arial';
         ctx.textBaseline = 'middle';
         ctx.textAlign = 'center';
 
@@ -74,7 +74,7 @@ const GaugeComponent = ({ score, hasLimit = false, hideGaugeDefault = false, ...
         ang = (num * Math.PI) / 5.5;
         ctx.fillStyle = '#D46B08';
         ctx.rotate(ang);
-        ctx.translate(-27, -radius * 0.84);
+        ctx.translate(-27, -radius * 0.82);
         ctx.rotate(-ang);
         ctx.fillText(25, 0, 0);
         ctx.rotate(ang);
@@ -85,7 +85,7 @@ const GaugeComponent = ({ score, hasLimit = false, hideGaugeDefault = false, ...
         ang = (num * Math.PI) / 4.8;
         ctx.fillStyle = '#13C2C2';
         ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.35);
+        ctx.translate(5, -radius * 0.32);
         ctx.rotate(-ang);
         ctx.fillText(75, 0, 0);
         ctx.rotate(ang);
@@ -93,10 +93,10 @@ const GaugeComponent = ({ score, hasLimit = false, hideGaugeDefault = false, ...
         ctx.rotate(-ang);
 
         num = 12;
-        ang = minW768 ? (num * Math.PI) / 4.5 : (num * Math.PI) / 4.55;
+        ang = minW768 ? (num * Math.PI) / 4.55 : (num * Math.PI) / 4.59;
         ctx.fillStyle = '#52C41A';
         ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.3);
+        ctx.translate(0, -radius * 0.325);
         ctx.rotate(-ang);
         ctx.fillText(50, 0, -45);
         ctx.rotate(ang);
