@@ -17,7 +17,7 @@ const Section1 = () => {
                 backgroundImage: 'url(' + hero.src + ')',
             }}
         >
-            <div className="container">
+            <div className={[style.custom_container, 'container'].join(' ')}>
                 <Row gutter={[60, 16]}>
                     <Col span={24} xl={13}>
                         <Title className={style.heading}>{data.section_01.heading}</Title>

@@ -3,7 +3,16 @@
     padding-top: calc(84px + 64px);
     background-size: cover;
     background-repeat: no-repeat;
-    aspect-ratio: 1.9;
+    /* aspect-ratio: 1.9; */
+    padding-top: 50%;
+}
+
+.custom_container {
+    position: absolute;
+    top: 124px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
 }
 
 .heading {
@@ -55,6 +64,15 @@
 @media screen and (max-width: 75rem) {
     .section {
         padding: 60px 16px;
+        aspect-ratio: unset;
+    }
+
+    .custom_container {
+        position: relative;
+        top: unset;
+        left: unset;
+        transform: translateX(-0);
+        height: fit-content;
     }
 
     .heading {

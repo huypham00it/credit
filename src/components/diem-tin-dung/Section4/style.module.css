@@ -16,6 +16,10 @@
 
 .card_wrap {
     perspective: 1000px;
+    -moz-perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -ms-perspective: 1000px;
+    -ms-perspective: 1000px;
 }
 
 .card {
@@ -27,17 +31,29 @@
     align-items: center;
     text-align: center;
     transition: transform 0.6s;
-    transform-style: preserve-3d;
+    -webkit-transition: transform 0.6s;
+    -moz-transition: transform 0.6s;
+    -ms-transition: transform 0.6s;
+    -o-transition: transform 0.6s;
+    /* transform-style: preserve-3d; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .card_flip .card {
     transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
 }
 
 .card_flip .card_back {
     display: block;
     transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
 }
 
 .card_flip .card_front {

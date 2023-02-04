@@ -358,5 +358,12 @@ input[type='number'] {
     max-width: 1320px;
     width: 100%;
     margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media screen and (max-width: 75rem) {
+    #diem-tin-dung-page .container {
+        padding: 0;
+    }
 }
 /* END: GLOBAL CSS FOR DIEM TIN DUNG PAGE */
