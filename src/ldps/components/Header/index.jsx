@@ -8,6 +8,7 @@ import { WHITE_LOGO } from '@/assets/img';
 import style from './style.module.css';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import useClickOutside from '@/hooks/useClickOutside';
+import Logo from '@/components/general/Logo';
 
 const { Header } = Layout;
 const HeaderComponent = (props) => {
@@ -40,13 +41,12 @@ const HeaderComponent = (props) => {
         <>
             <Header ref={headerRef} className={style.header + ' ' + (position > 80 ? style.fixed : '')}>
                 <div className={style.header_inner}>
-                    <Image
+                    <Logo
+                        type="light"
                         onClick={() => Router.push('/')}
                         className={style.logo}
-                        src={WHITE_LOGO.src}
                         width={102}
                         height={30}
-                        alt="creditvn_logo"
                     />
 
                     <div>

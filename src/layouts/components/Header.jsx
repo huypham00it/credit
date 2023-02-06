@@ -1,11 +1,10 @@
 import React from 'react';
 import { Layout, Button, Col, Row } from 'antd';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 
 import menus from '@/configs/navigation';
-import CreditLogo from '@/assets/img/credit.svg';
 import menuStyle from '@/assets/Menu.module.css';
+import Logo from '@/components/general/Logo';
 
 const { Header } = Layout;
 
@@ -27,7 +26,7 @@ const DesktopNavigation = ({ handleOpenSlider }) => {
                     top: 0,
                 }}
             >
-                <Image src={CreditLogo.src} height={64} width={109.26} alt="Credit.vn" />
+                <Logo height={64} width={109.26} />
                 <Row style={{ width: '390px' }}>
                     {menus.map((menu, index) => (
                         <Col span={8} key={index}>
@@ -50,20 +49,6 @@ const DesktopNavigation = ({ handleOpenSlider }) => {
                         </Col>
                     ))}
                 </Row>
-
-                {/* <Menu
-                    selectedKeys={router.pathname}
-                    items={menus}
-                    mode='horizontal'
-                    style={{ flex: 1, justifyContent: 'flex-end' }}
-                    onClick={({ key }) => {
-                        if(key === 'slider') {
-                            handleOpenSlider();
-                            return;
-                        }
-                        router.push(key)}
-                    }
-                /> */}
             </Header>
         </Layout>
     );

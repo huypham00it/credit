@@ -55,5 +55,6 @@
     .footer_bottom {
         padding: 16px;
         font-weight: 300 !important;
+        font-size: 12px;
     }
 }

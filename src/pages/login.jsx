@@ -27,6 +27,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 
 import styleLogin from '@/assets/Login.module.css';
+import Logo from '@/components/general/Logo';
 
 export default function LoginPage() {
     const [btnRef, setBtnRef] = useState(null);
@@ -287,12 +288,7 @@ export default function LoginPage() {
                             <div className={styleLogin.content_wrapper}>
                                 <div className={styleLogin.main_logo}>
                                     <motion.div variants={textVariant(0.4)}>
-                                        <Image
-                                            src="/images/logo_creditvn.svg"
-                                            width={239}
-                                            height={70}
-                                            alt="Logo creditvn"
-                                        />
+                                        <Logo width={239} height={70} />
                                     </motion.div>
                                 </div>
                                 <button ref={setBtnRef} id="send-otp-button" style={{ display: 'none' }}></button>
@@ -329,13 +325,7 @@ export default function LoginPage() {
                                 margin: '5vh auto 2vh',
                             }}
                         >
-                            <Image
-                                layout="responsive"
-                                src="/images/logo_creditvn.svg" // Route of the image file
-                                height={66} // Desired size with correct aspect ratio
-                                width={224} // Desired size with correct aspect ratio
-                                alt="Logo creditvn"
-                            />
+                            <Logo layout="responsive" height={66} width={224} />
                         </div>
                         <Content style={{ padding: '36px', height: '100%' }}>
                             <button ref={setBtnRef} id="send-otp-button" style={{ display: 'none' }}></button>

@@ -256,7 +256,7 @@ function UserForm() {
             <Layout
                 style={{
                     position: 'absolute',
-                    height: minH500 ? '65%' : '95%',
+                    height: minH500 ? '80%' : '95%',
                     bottom: 0,
                     left: 0,
                     right: 0,

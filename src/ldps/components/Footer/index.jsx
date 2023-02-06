@@ -1,8 +1,7 @@
-import { Col, Divider, Layout, Row, Typography } from 'antd';
-import Image from 'next/image';
+import { Col, Layout, Row, Typography } from 'antd';
 
-import { WHITE_LOGO } from '@/assets/img';
 import style from './style.module.css';
+import Logo from '@/components/general/Logo';
 
 const { Footer } = Layout;
 const { Title } = Typography;
@@ -13,7 +12,7 @@ const FooterComponent = () => {
             <div className={style.footer_inner}>
                 <Row gutter={[12, 12]} className={style.footer_top}>
                     <Col span={24} md={12} xl={6}>
-                        <Image width={102} height={30} src={WHITE_LOGO.src} />
+                        <Logo type="light" width={102} height={30} />
                         <Title className={style.footer_slogan} level={5}>
                             Hỗ trợ người dùng tìm ra và lựa chọn được sản phẩm tài chính phù hợp
                         </Title>

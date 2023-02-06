@@ -102,7 +102,7 @@ export default function GenderQuestion({ user, setUser, prevQuestion, nextQuesti
                             color: 'rgba(0, 0, 0, 0.85)',
                             fontWeight: 500,
                             marginTop: 0,
-                            marginBottom: 8,
+                            marginBottom: 0,
                             lineHeight: 2,
                         }}
                     >
@@ -127,7 +127,7 @@ export default function GenderQuestion({ user, setUser, prevQuestion, nextQuesti
                             color: 'rgba(0, 0, 0, 0.85)',
                             fontWeight: 500,
                             marginTop: 0,
-                            marginBottom: 8,
+                            marginBottom: 0,
                             lineHeight: 2,
                         }}
                     >
