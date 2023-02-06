@@ -1,5 +1,5 @@
 import { Button, Typography, Radio, Space } from 'antd';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import * as SLUGID from '@/configs/slugId';
 import gender_question from '@/configs/gender_question';
@@ -9,18 +9,24 @@ import DirectionArrow from '@/components/form/DirectionArrow';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import title from '@/configs/title';
 import Head from 'next/head';
+import InputMaterial from '../form/InputMaterial';
+import validEmail from '@/utils/validEmail';
+import { set } from 'lodash';
 
 const { Title } = Typography;
 
 export default function GenderQuestion({ user, setUser, prevQuestion, nextQuestion, current_step, total_steps }) {
     let start_input = useRef(new Date().getTime());
     let total_input = useRef(1);
+    const fieldTime = useRef(null);
     const genderRef = useRef(null);
+    const [hasError, setHasError] = useState(false);
 
     const matches = useMediaQuery('(max-height:568px)');
     const minW768 = useMediaQuery('(min-width:768px)');
 
     const handleNextQuestion = () => {
+        nextQuestion({ type: 'email', total_input: fieldTime.current, value: user.email });
         nextQuestion({ type: 'gender', total_input: total_input.current, value: user.gender });
     };
 
@@ -31,13 +37,35 @@ export default function GenderQuestion({ user, setUser, prevQuestion, nextQuesti
         setUser(new_data);
     };
 
+    const updateEmail = (value) => {
+        let new_data = { ...user };
+        new_data.email = value;
+        setUser((user) => new_data);
+    };
+
+    const handlePressEnter = () => {
+        const emailValue = document.getElementById('email-input')?.value;
+        console.log(emailValue);
+        if (validEmail(emailValue)) {
+            handleNextQuestion();
+        }
+    };
+
     useEffect(() => {
         document.getElementById('gender_question').addEventListener('keypress', (event) => {
             if (event.key === 'Enter' && user.gender) {
-                nextQuestion({ type: 'gender', total_input: total_input.current, value: user.gender });
+                handlePressEnter();
             }
         });
     });
+
+    useEffect(() => {
+        if (!validEmail(user.email)) {
+            let new_data = { ...user };
+            new_data.email = '';
+            setUser(new_data);
+        }
+    }, []);
 
     return (
         <>
@@ -66,6 +94,33 @@ export default function GenderQuestion({ user, setUser, prevQuestion, nextQuesti
                         {/* {gender_question.subtitle} */}
                         {`Bước ${current_step + 1}/${total_steps}`}
                     </Title>
+                    {/* Email */}
+
+                    <Title
+                        level={5}
+                        style={{
+                            color: 'rgba(0, 0, 0, 0.85)',
+                            fontWeight: 500,
+                            marginTop: 0,
+                            marginBottom: 8,
+                            lineHeight: 2,
+                        }}
+                    >
+                        {gender_question.email}
+                    </Title>
+
+                    <InputMaterial
+                        id="email-input"
+                        value={user.email}
+                        fieldTime={fieldTime}
+                        setValue={updateEmail}
+                        setError={setHasError}
+                        validMethod={validEmail}
+                        placeholder="Nhập email"
+                        messageError="Vui lòng nhập đúng email"
+                        showError={hasError && user.email != ''}
+                    />
+
                     <Title
                         level={5}
                         style={{
@@ -102,7 +157,7 @@ export default function GenderQuestion({ user, setUser, prevQuestion, nextQuesti
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                         <Button
                             type="primary"
-                            disabled={user.gender == ''}
+                            disabled={user.gender == '' || user.email == '' || !validEmail(user.email)}
                             onClick={handleNextQuestion}
                             className={signupStyle.button_small}
                             id={SLUGID.NEXT_GENDER}
@@ -120,7 +175,7 @@ export default function GenderQuestion({ user, setUser, prevQuestion, nextQuesti
                     className={signupStyle.button_bottom}
                     onClickPrev={() => prevQuestion()}
                     onClickNext={() => handleNextQuestion()}
-                    nextDisabled={user.gender == ''}
+                    nextDisabled={user.gender == '' || user.email == '' || !validEmail(user.email)}
                     id={SLUGID.NEXT_GENDER}
                 />
             </div>

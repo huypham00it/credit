@@ -166,7 +166,7 @@ const CreditScore = ({ score, large }) => {
                             router.push('/diem-tin-dung');
                         }}
                     >
-                        Vì sao điểm tín dụng của bạn <span>{score_lst[score].title}</span>
+                        Vì sao điểm tín dụng <span>{score_lst[score].title}</span>
                     </p>
                 </div>
 
@@ -293,7 +293,8 @@ const LoansList = ({ loans }) => {
                                 type="primary"
                                 className={StyleHome.button}
                                 onClick={() => {
-                                    handleSignUp(loan);
+                                    // handleSignUp(loan);
+                                    getOffer(loan);
                                 }}
                                 id={SLUGID.LOAN_SIGN_UP + loan.offer_id}
                             >
