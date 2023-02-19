@@ -1,6 +1,6 @@
 import Logo from '@/components/general/Logo';
 
-export default function () {
+export default function Logo() {
     return (
         <>
             <div
