@@ -10,28 +10,17 @@ export default function Document() {
             <Head>
                 <link rel="manifest" href="/manifest.json" />
                 <script async src="/libs/gauge.min.js"></script>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-						'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-						})(window,document,'script','dataLayer','${gg_tag_id}');`,
-                    }}
-                />
-                <script async src={`https://www.googleoptimize.com/optimize.js?id=${gg_opt}`} />
-
-                {/* GTM3  */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                        })(window,document,'script','dataLayer','GTM-TMVGTTH');`,
-                    }}
-                />
             </Head>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-5T0H5QNSV4"></script>
+            <script
+                dangerouslySetInnerHTML={{
+                    __html: `  window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+              
+                gtag('config', 'G-5T0H5QNSV4');`,
+                }}
+            ></script>
             <body>
                 <noscript
                     dangerouslySetInnerHTML={{
